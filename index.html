@@ -188,12 +188,44 @@ margin-bottom:10px;
 /* CONTACT */
 
 .contact{
-text-align:center;
+display:flex;
+justify-content:center;
+align-items:center;
 }
 
-.contact a{
+.contact-box{
+background:#020617;
+border:1px solid #1e293b;
+border-radius:12px;
+padding:50px;
+max-width:600px;
+width:100%;
+text-align:center;
+box-shadow:0 20px 40px rgba(0,0,0,0.5);
+}
+
+.contact-box h2{
+font-size:32px;
+margin-bottom:20px;
+}
+
+.contact-box p{
+color:#cbd5f5;
+margin-bottom:18px;
+font-size:16px;
+}
+
+.contact-box a{
+display:inline-block;
+margin-top:10px;
 color:#38bdf8;
 text-decoration:none;
+font-weight:bold;
+font-size:18px;
+}
+
+.contact-box a:hover{
+color:#0ea5e9;
 }
 
 /* FOOTER */
@@ -383,16 +415,30 @@ Technicians are on jobs. Phones ring. Customers hang up and call competitors.
 
 <section id="contact" class="contact">
 
-<h2 class="title">Contact Us</h2>
+<div class="contact-box">
 
-<p>Email: contact@bookedflow.net</p>
+<h2>Contact Booked Flow</h2>
 
 <p>
-Instagram:
-<a href="https://www.instagram.com/booked_flow?igsh=">
+Interested in seeing how AI Call Capture can help your HVAC business
+capture more jobs and stop losing calls?
+</p>
+
+<p>Email us directly</p>
+
+<a href="mailto:contact@bookedflow.net">
+contact@bookedflow.net
+</a>
+
+<p style="margin-top:25px;">
+Follow us on Instagram
+</p>
+
+<a href="https://www.instagram.com/booked_flow?igsh=" target="_blank">
 @booked_flow
 </a>
-</p>
+
+</div>
 
 </section>
 
@@ -424,6 +470,3 @@ document.getElementById("result").innerText=
 
 </body>
 </html>
-
-
-
