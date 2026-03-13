@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Booked Flow | Call Capture System for HVAC</title>
+<title>Booked Flow | HVAC Missed Call Recovery</title>
 
 <style>
 
@@ -29,9 +29,6 @@ justify-content:space-between;
 align-items:center;
 padding:20px 8%;
 background:#020617;
-position:sticky;
-top:0;
-z-index:100;
 border-bottom:1px solid #1e293b;
 }
 
@@ -45,7 +42,6 @@ nav a{
 color:#e2e8f0;
 text-decoration:none;
 margin-left:25px;
-font-size:15px;
 }
 
 .cta{
@@ -90,7 +86,7 @@ padding:14px 28px;
 border:none;
 border-radius:6px;
 cursor:pointer;
-margin-right:12px;
+margin-right:10px;
 font-size:16px;
 }
 
@@ -103,18 +99,11 @@ color:black;
 background:#0ea5e9;
 }
 
-.hero-form{
-background:#020617;
-padding:20px;
+.hero iframe{
 border-radius:10px;
-box-shadow:0 20px 40px rgba(0,0,0,0.6);
 }
 
-.hero-form iframe{
-border-radius:8px;
-}
-
-/* SECTION */
+/* SECTIONS */
 
 section{
 padding:80px 8%;
@@ -132,7 +121,7 @@ color:#cbd5f5;
 margin-bottom:50px;
 }
 
-/* CARDS */
+/* GRID */
 
 .grid{
 display:grid;
@@ -165,13 +154,13 @@ margin:auto;
 
 .calc input{
 padding:12px;
-width:120px;
+width:140px;
 margin:10px;
 border-radius:6px;
 border:none;
 }
 
-/* PROCESS */
+/* STEPS */
 
 .step{
 background:#020617;
@@ -185,47 +174,41 @@ color:#38bdf8;
 margin-bottom:10px;
 }
 
-/* CONTACT */
+/* COMPARISON */
 
-.contact{
-display:flex;
-justify-content:center;
-align-items:center;
+.compare{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+max-width:900px;
+margin:auto;
 }
 
-.contact-box{
+.compare-box{
 background:#020617;
+padding:30px;
+border-radius:10px;
 border:1px solid #1e293b;
-border-radius:12px;
-padding:50px;
-max-width:600px;
-width:100%;
-text-align:center;
-box-shadow:0 20px 40px rgba(0,0,0,0.5);
 }
 
-.contact-box h2{
-font-size:32px;
-margin-bottom:20px;
-}
-
-.contact-box p{
-color:#cbd5f5;
-margin-bottom:18px;
-font-size:16px;
-}
-
-.contact-box a{
-display:inline-block;
-margin-top:10px;
+.compare-box h3{
 color:#38bdf8;
-text-decoration:none;
-font-weight:bold;
-font-size:18px;
+margin-bottom:15px;
 }
 
-.contact-box a:hover{
-color:#0ea5e9;
+/* CTA */
+
+.cta-section{
+text-align:center;
+}
+
+.cta-section button{
+padding:16px 32px;
+font-size:18px;
+background:#38bdf8;
+border:none;
+border-radius:6px;
+cursor:pointer;
 }
 
 /* FOOTER */
@@ -243,15 +226,16 @@ color:#94a3b8;
 <body>
 
 <nav>
+
 <div class="logo">Booked Flow</div>
 
 <div>
-<a href="#features">Features</a>
-<a href="#process">How it Works</a>
-<a href="#contact" class="cta">Contact</a>
+<a href="#calculator">Calculator</a>
+<a href="#system">How It Works</a>
+<a href="#contact" class="cta">Book Demo</a>
 </div>
-</nav>
 
+</nav>
 
 <!-- HERO -->
 
@@ -259,12 +243,11 @@ color:#94a3b8;
 
 <div class="hero-text">
 
-<h1>Never Miss Another HVAC Job</h1>
+<h1>Turn Missed HVAC Calls Into $3,000 Jobs</h1>
 
 <p>
-With Call Capture System Your Business Answers Every Call, Captures
-Customer Details, Detects Emergencies, And Books Jobs Automatically —
-Even After Business Hours.
+Booked Flow answers every call for your HVAC business,
+captures customer details, and books jobs automatically — even after hours.
 </p>
 
 <div class="hero-buttons">
@@ -274,24 +257,20 @@ onclick="window.location.href='https://youtu.be/UTBsPwXg3l0?si=EQsGoq8HipCfB9Hv'
 Watch Demo
 </button>
 
+<button class="demo"
+onclick="document.getElementById('calculator').scrollIntoView()">
+Calculate Lost Revenue
+</button>
+
 </div>
 
-
 </div>
 
-
-  <div class="hero-form">
-
-<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfshpIvHhmURchkradkYA8dr2wyPDifzg1eED8aQgqzvOdPJw/viewform?embedded=true"
-width="360"
-height="720"
-frameborder="0">
+<iframe width="360" height="420"
+src="https://www.youtube.com/embed/UTBsPwXg3l0">
 </iframe>
 
-</div>
-
 </section>
-
 
 <!-- PROBLEM -->
 
@@ -307,27 +286,26 @@ Technicians are on jobs. Phones ring. Customers hang up and call competitors.
 
 <div class="card">
 <h3>Busy Technicians</h3>
-<p>Most calls happen when technicians are already on jobs.</p>
+<p>Most HVAC calls happen while you're already working on another job.</p>
 </div>
 
 <div class="card">
-<h3>After Hours Calls</h3>
-<p>Many emergency HVAC calls happen late evening.</p>
+<h3>After Hours Emergencies</h3>
+<p>Emergency HVAC calls often happen at night when nobody answers.</p>
 </div>
 
 <div class="card">
 <h3>Lost Revenue</h3>
-<p>Each missed call can mean losing a $500 – $3000 job.</p>
+<p>Each missed call could mean losing a $500 – $3000 HVAC job.</p>
 </div>
 
 </div>
 
 </section>
 
-
 <!-- CALCULATOR -->
 
-<section>
+<section id="calculator">
 
 <h2 class="title">Missed Call Revenue Calculator</h2>
 
@@ -343,7 +321,7 @@ Technicians are on jobs. Phones ring. Customers hang up and call competitors.
 
 <br><br>
 
-<button class="demo" onclick="calculate()">Calculate Lost Revenue</button>
+<button class="demo" onclick="calculate()">Calculate</button>
 
 <h3 id="result"></h3>
 
@@ -351,40 +329,11 @@ Technicians are on jobs. Phones ring. Customers hang up and call competitors.
 
 </section>
 
+<!-- SYSTEM -->
 
-<!-- FEATURES -->
+<section id="system">
 
-<section id="features">
-
-<h2 class="title">What Booked Flow Does</h2>
-
-<div class="grid">
-
-<div class="card">
-<h3>24/7 AI Receptionist</h3>
-<p>Answers every call instantly and speaks naturally.</p>
-</div>
-
-<div class="card">
-<h3>Emergency Detection</h3>
-<p>Identifies urgent HVAC issues and alerts technicians.</p>
-</div>
-
-<div class="card">
-<h3>Automatic Booking</h3>
-<p>Schedules service appointments automatically.</p>
-</div>
-
-</div>
-
-</section>
-
-
-<!-- PROCESS -->
-
-<section id="process">
-
-<h2 class="title">How It Works</h2>
+<h2 class="title">What Happens When Someone Calls</h2>
 
 <div class="grid">
 
@@ -394,64 +343,78 @@ Technicians are on jobs. Phones ring. Customers hang up and call competitors.
 </div>
 
 <div class="step">
-<h3>2 System Answers</h3>
-<p>AI gathers problem details.</p>
+<h3>2 AI Answers Instantly</h3>
+<p>The system answers and collects problem details.</p>
 </div>
 
 <div class="step">
-<h3>3 Job Scheduled</h3>
-<p>Appointment added to calendar.</p>
+<h3>3 Appointment Scheduled</h3>
+<p>Job gets added to your calendar automatically.</p>
 </div>
 
 <div class="step">
 <h3>4 Technician Notified</h3>
-<p>SMS sent instantly with job details.</p>
+<p>You receive an SMS with job details instantly.</p>
 </div>
 
 </div>
 
 </section>
 
+<!-- COMPARISON -->
 
-<!-- CONTACT -->
+<section>
 
-<section id="contact" class="contact">
+<h2 class="title">Receptionist vs Booked Flow</h2>
 
-<div class="contact-box">
+<div class="compare">
 
-<h2>Contact Booked Flow</h2>
+<div class="compare-box">
 
-<p>
-Interested in seeing how AI Call Capture can help your HVAC business
-capture more jobs and stop losing calls?
-</p>
+<h3>Receptionist</h3>
 
-<p>Email us directly</p>
+<p>$3k+ monthly salary</p>
+<p>Limited working hours</p>
+<p>Missed after-hours calls</p>
 
-<a href="mailto:contact@bookedflow.net">
-contact@bookedflow.net
-</a>
+</div>
 
-<p style="margin-top:25px;">
-Follow us on Instagram
-</p>
+<div class="compare-box">
 
-<a href="https://www.instagram.com/booked_flow?igsh=" target="_blank">
-@booked_flow
-</a>
+<h3>Booked Flow</h3>
+
+<p>Works 24/7</p>
+<p>Answers instantly</p>
+<p>Never misses a call</p>
+
+</div>
 
 </div>
 
 </section>
 
+<!-- CTA -->
+
+<section id="contact" class="cta-section">
+
+<h2 class="title">Stop Losing HVAC Jobs</h2>
+
+<p class="subtitle">
+See how many calls your business is missing and how many jobs you could recover.
+</p>
+
+<button onclick="window.location.href='mailto:contact@bookedflow.net'">
+Book Free Call Audit
+</button>
+
+</section>
 
 <footer>
 
-© 2026 Booked Flow. All rights reserved.  
-AI Call Capture for HVAC Companies | Founded by Sushant Jadhao
+© 2026 Booked Flow  
+HVAC Missed Call Recovery System | Founded By Sushant Jadhao
 
 </footer>
-
 
 <script>
 
@@ -463,13 +426,13 @@ let value=document.getElementById("value").value;
 
 let revenue=calls*value*4;
 
-document.getElementById("result").innerText=
-"Estimated Monthly Revenue Lost: $"+revenue;
+document.getElementById("result").innerText =
+"You're Losing About $" + revenue + " Per Month From Missed Calls.";
 
 }
 
 </script>
 
-
 </body>
 </html>
+
