@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -30,6 +31,7 @@ align-items:center;
 padding:20px 8%;
 background:#020617;
 border-bottom:1px solid #1e293b;
+flex-wrap:wrap;
 }
 
 .logo{
@@ -41,7 +43,8 @@ color:#38bdf8;
 nav a{
 color:#e2e8f0;
 text-decoration:none;
-margin-left:25px;
+margin-left:20px;
+font-size:14px;
 }
 
 .cta{
@@ -54,13 +57,14 @@ border-radius:6px;
 /* HERO */
 
 .hero{
-padding:110px 8%;
+padding:100px 8%;
 display:flex;
 flex-wrap:wrap;
 justify-content:space-between;
 align-items:center;
 
-background-image:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.8)),
+background-image:
+linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.85)),
 url("https://images.unsplash.com/photo-1581578731548-c64695cc6952");
 
 background-size:cover;
@@ -72,7 +76,7 @@ max-width:520px;
 }
 
 .hero h1{
-font-size:46px;
+font-size:44px;
 margin-bottom:20px;
 }
 
@@ -82,11 +86,12 @@ margin-bottom:30px;
 }
 
 .hero-buttons button{
-padding:14px 28px;
+padding:14px 26px;
 border:none;
 border-radius:6px;
 cursor:pointer;
 margin-right:10px;
+margin-bottom:10px;
 font-size:16px;
 }
 
@@ -95,11 +100,15 @@ background:#38bdf8;
 color:black;
 }
 
-.demo:hover{
-background:#0ea5e9;
+.hero-video{
+width:420px;
+max-width:100%;
+margin-top:20px;
 }
 
-.hero iframe{
+.hero-video iframe{
+width:100%;
+height:240px;
 border-radius:10px;
 }
 
@@ -110,7 +119,7 @@ padding:80px 8%;
 }
 
 .title{
-font-size:34px;
+font-size:32px;
 text-align:center;
 margin-bottom:20px;
 }
@@ -160,7 +169,7 @@ border-radius:6px;
 border:none;
 }
 
-/* STEPS */
+/* PROCESS */
 
 .step{
 background:#020617;
@@ -179,7 +188,7 @@ margin-bottom:10px;
 .compare{
 display:grid;
 grid-template-columns:1fr 1fr;
-gap:40px;
+gap:30px;
 max-width:900px;
 margin:auto;
 }
@@ -220,7 +229,62 @@ border-top:1px solid #1e293b;
 color:#94a3b8;
 }
 
+/* ========================= */
+/* MOBILE RESPONSIVE */
+/* ========================= */
+
+@media (max-width:768px){
+
+.hero{
+flex-direction:column;
+text-align:center;
+}
+
+.hero-text{
+max-width:100%;
+}
+
+.hero h1{
+font-size:32px;
+}
+
+.hero-video{
+width:100%;
+}
+
+.hero-buttons button{
+width:100%;
+}
+
+nav{
+flex-direction:column;
+gap:10px;
+}
+
+nav div{
+display:flex;
+flex-wrap:wrap;
+gap:12px;
+justify-content:center;
+}
+
+.compare{
+grid-template-columns:1fr;
+}
+
+.calc input{
+width:100%;
+max-width:220px;
+}
+
+section{
+padding:60px 6%;
+}
+
+}
+
 </style>
+
 </head>
 
 <body>
@@ -253,22 +317,25 @@ captures customer details, and books jobs automatically — even after hours.
 <div class="hero-buttons">
 
 <button class="demo"
-onclick="window.location.href='https://youtu.be/UTBsPwXg3l0?si=EQsGoq8HipCfB9Hv'">
-Watch Demo
-</button>
+onclick="window.location.href='https://youtu.be/UTBsPwXg3l0'">
+Watch Demo </button>
 
 <button class="demo"
 onclick="document.getElementById('calculator').scrollIntoView()">
-Calculate Lost Revenue
-</button>
+Calculate Lost Revenue </button>
 
 </div>
 
 </div>
 
-<iframe width="360" height="420"
-src="https://www.youtube.com/embed/UTBsPwXg3l0">
+<div class="hero-video">
+
+<iframe src="https://www.youtube.com/embed/UTBsPwXg3l0"
+frameborder="0"
+allowfullscreen>
 </iframe>
+
+</div>
 
 </section>
 
@@ -286,7 +353,7 @@ Technicians are on jobs. Phones ring. Customers hang up and call competitors.
 
 <div class="card">
 <h3>Busy Technicians</h3>
-<p>Most HVAC calls happen while you're already working on another job.</p>
+<p>Most HVAC calls happen while you're already on another job.</p>
 </div>
 
 <div class="card">
@@ -312,11 +379,9 @@ Technicians are on jobs. Phones ring. Customers hang up and call competitors.
 <div class="calc">
 
 <p>Average missed calls per week</p>
-
 <input id="calls" type="number" value="10">
 
 <p>Average job value ($)</p>
-
 <input id="value" type="number" value="700">
 
 <br><br>
@@ -333,7 +398,7 @@ Technicians are on jobs. Phones ring. Customers hang up and call competitors.
 
 <section id="system">
 
-<h2 class="title">What Happens When Someone Calls</h2>
+<h2 class="title">How The System Works</h2>
 
 <div class="grid">
 
@@ -343,18 +408,18 @@ Technicians are on jobs. Phones ring. Customers hang up and call competitors.
 </div>
 
 <div class="step">
-<h3>2 AI Answers Instantly</h3>
-<p>The system answers and collects problem details.</p>
+<h3>2 AI Answers</h3>
+<p>The system answers instantly and collects problem details.</p>
 </div>
 
 <div class="step">
-<h3>3 Appointment Scheduled</h3>
-<p>Job gets added to your calendar automatically.</p>
+<h3>3 Job Scheduled</h3>
+<p>The appointment gets added to your calendar automatically.</p>
 </div>
 
 <div class="step">
-<h3>4 Technician Notified</h3>
-<p>You receive an SMS with job details instantly.</p>
+<h3>4 Technician Alerted</h3>
+<p>You receive an SMS with job details immediately.</p>
 </div>
 
 </div>
@@ -373,7 +438,7 @@ Technicians are on jobs. Phones ring. Customers hang up and call competitors.
 
 <h3>Receptionist</h3>
 
-<p>$3k+ monthly salary</p>
+<p>$3000+ monthly salary</p>
 <p>Limited working hours</p>
 <p>Missed after-hours calls</p>
 
@@ -400,7 +465,7 @@ Technicians are on jobs. Phones ring. Customers hang up and call competitors.
 <h2 class="title">Stop Losing HVAC Jobs</h2>
 
 <p class="subtitle">
-See how many calls your business is missing and how many jobs you could recover.
+See how many jobs your business is missing every month.
 </p>
 
 <button onclick="window.location.href='mailto:contact@bookedflow.net'">
@@ -411,8 +476,8 @@ Book Free Call Audit
 
 <footer>
 
-© 2026 Booked Flow  
-HVAC Missed Call Recovery System | Founded By Sushant Jadhao
+© 2026 Booked Flow
+HVAC Missed Call Recovery System
 
 </footer>
 
