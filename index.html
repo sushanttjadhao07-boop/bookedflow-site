@@ -1,74 +1,68 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Booked Flow | HVAC Missed Call Recovery</title>
+<title>Booked Flow | HVAC Call Capture</title>
 
 <style>
-
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial, Helvetica, sans-serif;
+font-family: 'Inter', sans-serif;
 }
 
 body{
-background:#0b1120;
+background: radial-gradient(circle at top, #0f172a, #020617);
 color:white;
-line-height:1.6;
+overflow-x:hidden;
 }
 
-/* NAVBAR */
+/* NAV */
 
 nav{
 display:flex;
 justify-content:space-between;
-align-items:center;
 padding:20px 8%;
-background:#020617;
-border-bottom:1px solid #1e293b;
-flex-wrap:wrap;
+position:fixed;
+width:100%;
+background:rgba(2,6,23,0.7);
+backdrop-filter: blur(10px);
+border-bottom:1px solid rgba(255,255,255,0.05);
+z-index:1000;
 }
 
 .logo{
-font-size:22px;
-font-weight:bold;
-color:#38bdf8;
+font-size:20px;
+font-weight:600;
+background:linear-gradient(90deg,#38bdf8,#8b5cf6);
+-webkit-background-clip:text;
+color:transparent;
 }
 
 nav a{
-color:#e2e8f0;
-text-decoration:none;
+color:#cbd5f5;
 margin-left:20px;
+text-decoration:none;
 font-size:14px;
 }
 
 .cta{
-background:#38bdf8;
-color:black;
+background:linear-gradient(90deg,#38bdf8,#8b5cf6);
 padding:10px 18px;
-border-radius:6px;
+border-radius:8px;
+color:white;
 }
 
 /* HERO */
 
 .hero{
-padding:100px 8%;
+padding:140px 8% 100px;
 display:flex;
-flex-wrap:wrap;
 justify-content:space-between;
 align-items:center;
-
-background-image:
-linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.85)),
-url("https://images.unsplash.com/photo-1581578731548-c64695cc6952");
-
-background-size:cover;
-background-position:center;
+flex-wrap:wrap;
 }
 
 .hero-text{
@@ -76,37 +70,56 @@ max-width:520px;
 }
 
 .hero h1{
-font-size:44px;
-margin-bottom:20px;
+font-size:48px;
+line-height:1.2;
+background:linear-gradient(90deg,#fff,#a5b4fc);
+-webkit-background-clip:text;
+color:transparent;
 }
 
 .hero p{
-color:#cbd5f5;
-margin-bottom:30px;
+margin:20px 0;
+color:#94a3b8;
 }
 
 .hero-buttons button{
 padding:14px 26px;
 border:none;
-border-radius:6px;
-cursor:pointer;
+border-radius:10px;
 margin-right:10px;
-margin-bottom:10px;
-font-size:16px;
+cursor:pointer;
+font-size:15px;
+transition:0.3s;
 }
 
 .demo{
-background:#38bdf8;
-color:black;
+background:linear-gradient(90deg,#38bdf8,#8b5cf6);
+color:white;
 }
 
-.hero-video{
+.demo:hover{
+transform:translateY(-2px);
+box-shadow:0 10px 25px rgba(56,189,248,0.3);
+}
+
+/* 3D CARD */
+
+.hero-card{
 width:420px;
-max-width:100%;
-margin-top:20px;
+background:rgba(255,255,255,0.03);
+border:1px solid rgba(255,255,255,0.08);
+padding:20px;
+border-radius:16px;
+backdrop-filter:blur(15px);
+transform-style:preserve-3d;
+transition:0.4s;
 }
 
-.hero-video iframe{
+.hero-card:hover{
+transform:rotateY(10deg) rotateX(5deg);
+}
+
+.hero-card iframe{
 width:100%;
 height:240px;
 border-radius:10px;
@@ -115,22 +128,22 @@ border-radius:10px;
 /* SECTIONS */
 
 section{
-padding:80px 8%;
+padding:100px 8%;
 }
 
 .title{
-font-size:32px;
+font-size:34px;
 text-align:center;
 margin-bottom:20px;
 }
 
 .subtitle{
 text-align:center;
-color:#cbd5f5;
+color:#94a3b8;
 margin-bottom:50px;
 }
 
-/* GRID */
+/* CARDS */
 
 .grid{
 display:grid;
@@ -139,85 +152,69 @@ gap:30px;
 }
 
 .card{
-background:#020617;
+background:rgba(255,255,255,0.03);
+border:1px solid rgba(255,255,255,0.08);
 padding:28px;
-border-radius:10px;
-border:1px solid #1e293b;
+border-radius:16px;
+backdrop-filter:blur(12px);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-6px);
+box-shadow:0 15px 40px rgba(139,92,246,0.2);
 }
 
 .card h3{
-color:#38bdf8;
+color:#8b5cf6;
 margin-bottom:10px;
 }
 
 /* CALCULATOR */
 
 .calc{
-background:#020617;
+background:rgba(255,255,255,0.03);
 padding:40px;
-border-radius:10px;
+border-radius:16px;
 text-align:center;
-max-width:700px;
+max-width:600px;
 margin:auto;
+backdrop-filter:blur(12px);
 }
 
 .calc input{
 padding:12px;
-width:140px;
 margin:10px;
-border-radius:6px;
+border-radius:8px;
 border:none;
+background:#020617;
+color:white;
 }
 
 /* PROCESS */
 
 .step{
-background:#020617;
+background:rgba(255,255,255,0.03);
 padding:25px;
-border-radius:10px;
-border:1px solid #1e293b;
-}
-
-.step h3{
-color:#38bdf8;
-margin-bottom:10px;
-}
-
-/* COMPARISON */
-
-.compare{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:30px;
-max-width:900px;
-margin:auto;
-}
-
-.compare-box{
-background:#020617;
-padding:30px;
-border-radius:10px;
-border:1px solid #1e293b;
-}
-
-.compare-box h3{
-color:#38bdf8;
-margin-bottom:15px;
+border-radius:16px;
+border:1px solid rgba(255,255,255,0.08);
 }
 
 /* CTA */
 
-.cta-section{
-text-align:center;
+.cta-section button{
+padding:16px 30px;
+font-size:16px;
+background:linear-gradient(90deg,#38bdf8,#8b5cf6);
+border:none;
+border-radius:10px;
+cursor:pointer;
+transition:0.3s;
 }
 
-.cta-section button{
-padding:16px 32px;
-font-size:18px;
-background:#38bdf8;
-border:none;
-border-radius:6px;
-cursor:pointer;
+.cta-section button:hover{
+transform:translateY(-3px);
+box-shadow:0 10px 30px rgba(139,92,246,0.3);
 }
 
 /* FOOTER */
@@ -225,163 +222,103 @@ cursor:pointer;
 footer{
 text-align:center;
 padding:40px;
-border-top:1px solid #1e293b;
-color:#94a3b8;
+color:#64748b;
+border-top:1px solid rgba(255,255,255,0.05);
 }
 
-/* ========================= */
-/* MOBILE RESPONSIVE */
-/* ========================= */
+/* MOBILE */
 
-@media (max-width:768px){
+@media(max-width:768px){
 
 .hero{
 flex-direction:column;
 text-align:center;
 }
 
-.hero-text{
-max-width:100%;
-}
-
 .hero h1{
 font-size:32px;
 }
 
-.hero-video{
+.hero-card{
 width:100%;
-}
-
-.hero-buttons button{
-width:100%;
-}
-
-nav{
-flex-direction:column;
-gap:10px;
-}
-
-nav div{
-display:flex;
-flex-wrap:wrap;
-gap:12px;
-justify-content:center;
-}
-
-.compare{
-grid-template-columns:1fr;
-}
-
-.calc input{
-width:100%;
-max-width:220px;
-}
-
-section{
-padding:60px 6%;
+margin-top:20px;
 }
 
 }
-
 </style>
-
 </head>
 
 <body>
 
 <nav>
-
 <div class="logo">Booked Flow</div>
-
 <div>
 <a href="#calculator">Calculator</a>
-<a href="#system">How It Works</a>
+<a href="#system">How it Works</a>
 <a href="#contact" class="cta">Book Demo</a>
 </div>
-
 </nav>
-
-<!-- HERO -->
 
 <section class="hero">
 
 <div class="hero-text">
-
-<h1>Turn Missed HVAC Calls Into $3,000 Jobs</h1>
+<h1>Capture Every Missed HVAC Call — Even After Hours</h1>
 
 <p>
-Booked Flow answers every call for your HVAC business,
-captures customer details, and books jobs automatically — even after hours.
+Stop losing emergency jobs to competitors. Our AI answers every call,
+qualifies leads, and books jobs automatically.
 </p>
 
 <div class="hero-buttons">
+<button class="demo" onclick="window.location.href='https://youtu.be/UTBsPwXg3l0'">
+Watch Demo
+</button>
 
-<button class="demo"
-onclick="window.location.href='https://youtu.be/UTBsPwXg3l0'">
-Watch Demo </button>
-
-<button class="demo"
-onclick="document.getElementById('calculator').scrollIntoView()">
-Calculate Lost Revenue </button>
-
+<button class="demo" onclick="document.getElementById('calculator').scrollIntoView()">
+See Lost Revenue
+</button>
+</div>
 </div>
 
-</div>
-
-<div class="hero-video">
-
-<iframe src="https://www.youtube.com/embed/UTBsPwXg3l0"
-frameborder="0"
-allowfullscreen>
-</iframe>
-
+<div class="hero-card">
+<iframe src="https://www.youtube.com/embed/UTBsPwXg3l0" frameborder="0"></iframe>
 </div>
 
 </section>
 
-<!-- PROBLEM -->
-
 <section>
-
-<h2 class="title">HVAC Companies Lose Thousands From Missed Calls</h2>
-
-<p class="subtitle">
-Technicians are on jobs. Phones ring. Customers hang up and call competitors.
-</p>
+<h2 class="title">Why HVAC Companies Lose Revenue</h2>
+<p class="subtitle">Every missed call = lost job</p>
 
 <div class="grid">
 
 <div class="card">
-<h3>Busy Technicians</h3>
-<p>Most HVAC calls happen while you're already on another job.</p>
+<h3>Missed Calls</h3>
+<p>Technicians can’t answer while working.</p>
 </div>
 
 <div class="card">
-<h3>After Hours Emergencies</h3>
-<p>Emergency HVAC calls often happen at night when nobody answers.</p>
+<h3>After Hours</h3>
+<p>Emergency calls happen when you're closed.</p>
 </div>
 
 <div class="card">
-<h3>Lost Revenue</h3>
-<p>Each missed call could mean losing a $500 – $3000 HVAC job.</p>
+<h3>Lost Jobs</h3>
+<p>Customers call the next company instantly.</p>
 </div>
 
 </div>
-
 </section>
 
-<!-- CALCULATOR -->
-
 <section id="calculator">
-
-<h2 class="title">Missed Call Revenue Calculator</h2>
+<h2 class="title">Revenue Loss Calculator</h2>
 
 <div class="calc">
 
-<p>Average missed calls per week</p>
+<p>Missed calls per week</p>
 <input id="calls" type="number" value="10">
 
-<p>Average job value ($)</p>
+<p>Avg job value ($)</p>
 <input id="value" type="number" value="700">
 
 <br><br>
@@ -391,113 +328,59 @@ Technicians are on jobs. Phones ring. Customers hang up and call competitors.
 <h3 id="result"></h3>
 
 </div>
-
 </section>
 
-<!-- SYSTEM -->
-
 <section id="system">
-
-<h2 class="title">How The System Works</h2>
+<h2 class="title">How It Works</h2>
 
 <div class="grid">
 
 <div class="step">
-<h3>1 Customer Calls</h3>
-<p>Customer calls your HVAC business.</p>
+<h3>1 Call Comes In</h3>
+<p>Customer calls your business</p>
 </div>
 
 <div class="step">
 <h3>2 AI Answers</h3>
-<p>The system answers instantly and collects problem details.</p>
+<p>Captures job details instantly</p>
 </div>
 
 <div class="step">
-<h3>3 Job Scheduled</h3>
-<p>The appointment gets added to your calendar automatically.</p>
+<h3>3 Booking</h3>
+<p>Schedules automatically</p>
 </div>
 
 <div class="step">
-<h3>4 Technician Alerted</h3>
-<p>You receive an SMS with job details immediately.</p>
+<h3>4 You Get Alert</h3>
+<p>SMS + job info instantly</p>
 </div>
 
 </div>
-
 </section>
-
-<!-- COMPARISON -->
-
-<section>
-
-<h2 class="title">Receptionist vs Booked Flow</h2>
-
-<div class="compare">
-
-<div class="compare-box">
-
-<h3>Receptionist</h3>
-
-<p>$3000+ monthly salary</p>
-<p>Limited working hours</p>
-<p>Missed after-hours calls</p>
-
-</div>
-
-<div class="compare-box">
-
-<h3>Booked Flow</h3>
-
-<p>Works 24/7</p>
-<p>Answers instantly</p>
-<p>Never misses a call</p>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- CTA -->
 
 <section id="contact" class="cta-section">
-
 <h2 class="title">Stop Losing HVAC Jobs</h2>
-
-<p class="subtitle">
-See how many jobs your business is missing every month.
-</p>
+<p class="subtitle">See how many jobs you're missing</p>
 
 <button onclick="window.location.href='mailto:contact@bookedflow.net'">
 Book Free Call Audit
 </button>
-
 </section>
 
 <footer>
-
 © 2026 Booked Flow
-HVAC Call Capture System | Founded By Sushant Jadhao
-
 </footer>
 
 <script>
-
 function calculate(){
-
 let calls=document.getElementById("calls").value;
-
 let value=document.getElementById("value").value;
-
 let revenue=calls*value*4;
 
 document.getElementById("result").innerText =
-"You're Losing About $" + revenue + " Per Month From Missed Calls.";
-
+"You're losing about $" + revenue + " per month.";
 }
-
 </script>
 
 </body>
 </html>
-
