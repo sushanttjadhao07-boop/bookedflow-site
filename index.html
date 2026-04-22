@@ -3,20 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Booked Flow | HVAC Call Capture</title>
+<title>Booked Flow</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family: 'Inter', sans-serif;
+font-family:'Inter',sans-serif;
 }
 
 body{
 background:#020617;
 color:white;
-line-height:1.5;
 }
 
 /* NAV */
@@ -25,15 +26,15 @@ nav{
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:14px 5%;
-background:rgba(2,6,23,0.9);
+padding:16px 6%;
+background:rgba(2,6,23,0.8);
+backdrop-filter:blur(10px);
 position:sticky;
 top:0;
 z-index:100;
 }
 
 .logo{
-font-size:18px;
 font-weight:600;
 background:linear-gradient(90deg,#38bdf8,#8b5cf6);
 -webkit-background-clip:text;
@@ -42,116 +43,121 @@ color:transparent;
 
 .cta{
 background:linear-gradient(90deg,#38bdf8,#8b5cf6);
-padding:8px 14px;
-border-radius:8px;
-font-size:13px;
-color:white;
+padding:10px 16px;
+border-radius:10px;
+font-size:14px;
 text-decoration:none;
+color:white;
 }
 
 /* HERO */
 
 .hero{
-padding:60px 5% 40px;
-text-align:center;
+display:flex;
+flex-direction:column;
+gap:30px;
+padding:60px 6%;
 }
 
-.hero h1{
+.hero-text h1{
 font-size:28px;
-line-height:1.3;
-margin-bottom:12px;
+margin-bottom:10px;
 }
 
-.hero p{
+.hero-text p{
 color:#94a3b8;
-font-size:14px;
 margin-bottom:20px;
 }
 
+.hero-buttons{
+display:flex;
+flex-direction:column;
+gap:10px;
+}
+
 .hero-buttons button{
-width:100%;
 padding:14px;
-margin-bottom:10px;
 border:none;
 border-radius:10px;
-font-size:14px;
 background:linear-gradient(90deg,#38bdf8,#8b5cf6);
 color:white;
+cursor:pointer;
+}
+
+/* GLASS CARD */
+
+.glass{
+background:rgba(15,23,42,0.6);
+backdrop-filter:blur(20px);
+border:1px solid rgba(255,255,255,0.08);
+border-radius:16px;
+box-shadow:0 10px 40px rgba(0,0,0,0.4);
 }
 
 /* VIDEO */
 
 .video-box{
-margin-top:20px;
-border-radius:12px;
 overflow:hidden;
 }
 
 .video-box iframe{
 width:100%;
-height:200px;
+height:220px;
+border:none;
 }
 
 /* SECTIONS */
 
 section{
-padding:50px 5%;
+padding:60px 6%;
 }
 
 .title{
-font-size:22px;
 text-align:center;
+font-size:24px;
 margin-bottom:10px;
 }
 
 .subtitle{
 text-align:center;
 color:#94a3b8;
-font-size:14px;
-margin-bottom:25px;
+margin-bottom:30px;
 }
 
-/* CARDS */
+/* GRID */
 
 .grid{
-display:flex;
-flex-direction:column;
-gap:15px;
+display:grid;
+gap:16px;
 }
 
 .card, .step{
-background:#0f172a;
-padding:18px;
-border-radius:12px;
-border:1px solid rgba(255,255,255,0.05);
+padding:20px;
 }
 
 .card h3, .step h3{
 color:#38bdf8;
 margin-bottom:6px;
-font-size:15px;
 }
 
 .card p, .step p{
-font-size:13px;
 color:#cbd5f5;
+font-size:14px;
 }
 
 /* CALCULATOR */
 
 .calc{
-background:#0f172a;
-padding:20px;
-border-radius:12px;
+padding:25px;
 text-align:center;
 }
 
 .calc input{
 width:100%;
 padding:12px;
-margin:8px 0;
-border-radius:8px;
+margin:10px 0;
 border:none;
+border-radius:8px;
 background:#020617;
 color:white;
 }
@@ -161,9 +167,9 @@ width:100%;
 padding:14px;
 border:none;
 border-radius:10px;
-margin-top:10px;
 background:linear-gradient(90deg,#38bdf8,#8b5cf6);
 color:white;
+cursor:pointer;
 }
 
 /* CTA */
@@ -173,63 +179,69 @@ text-align:center;
 }
 
 .cta-section button{
-width:100%;
-padding:14px;
-font-size:14px;
-background:linear-gradient(90deg,#38bdf8,#8b5cf6);
+padding:14px 20px;
 border:none;
 border-radius:10px;
+background:linear-gradient(90deg,#38bdf8,#8b5cf6);
+color:white;
+cursor:pointer;
 }
 
 /* FOOTER */
 
 footer{
 text-align:center;
-padding:30px 10px;
-font-size:12px;
+padding:30px;
 color:#64748b;
+font-size:12px;
 }
 
-/* ===== DESKTOP ENHANCEMENT ===== */
+/* ===== DESKTOP ===== */
 
 @media(min-width:768px){
 
 .hero{
-display:flex;
+flex-direction:row;
 align-items:center;
 justify-content:space-between;
-text-align:left;
-padding:120px 8%;
+padding:100px 10%;
 }
 
 .hero-text{
-max-width:500px;
+max-width:520px;
 }
 
-.hero h1{
-font-size:44px;
+.hero-text h1{
+font-size:48px;
 }
 
-.video-box{
-width:420px;
-}
-
-.grid{
+.hero-buttons{
 flex-direction:row;
 }
 
-.card, .step{
+.hero-buttons button{
 flex:1;
 }
 
+.video-box{
+width:480px;
+}
+
+.video-box iframe{
+height:270px;
+}
+
+.grid{
+grid-template-columns:repeat(3,1fr);
+}
+
 section{
-padding:80px 8%;
+padding:80px 10%;
 }
 
 .title{
-font-size:32px;
+font-size:34px;
 }
-
 }
 </style>
 </head>
@@ -247,23 +259,19 @@ font-size:32px;
 
 <div class="hero-text">
 <h1>Capture Every Missed HVAC Call</h1>
-
-<p>
-Turn missed calls into booked jobs automatically — even after hours.
-</p>
+<p>Turn missed calls into booked jobs automatically — even after hours.</p>
 
 <div class="hero-buttons">
 <button onclick="window.location.href='https://youtu.be/UTBsPwXg3l0'">
 Watch Demo
 </button>
-
 <button onclick="document.getElementById('calculator').scrollIntoView()">
-Calculate Lost Revenue
+Calculate Revenue Loss
 </button>
 </div>
 </div>
 
-<div class="video-box">
+<div class="video-box glass">
 <iframe src="https://www.youtube.com/embed/UTBsPwXg3l0"></iframe>
 </div>
 
@@ -276,19 +284,19 @@ Calculate Lost Revenue
 
 <div class="grid">
 
-<div class="card">
+<div class="card glass">
 <h3>On Jobs</h3>
 <p>You can’t answer calls while working.</p>
 </div>
 
-<div class="card">
+<div class="card glass">
 <h3>After Hours</h3>
 <p>Emergency calls come at night.</p>
 </div>
 
-<div class="card">
+<div class="card glass">
 <h3>Customers Leave</h3>
-<p>They call your competitor instantly.</p>
+<p>They call competitors instantly.</p>
 </div>
 
 </div>
@@ -299,10 +307,9 @@ Calculate Lost Revenue
 <section id="calculator">
 <h2 class="title">Lost Revenue Calculator</h2>
 
-<div class="calc">
+<div class="calc glass">
 
 <input id="calls" type="number" placeholder="Missed calls/week">
-
 <input id="value" type="number" placeholder="Avg job value ($)">
 
 <button onclick="calculate()">Calculate</button>
@@ -319,19 +326,19 @@ Calculate Lost Revenue
 
 <div class="grid">
 
-<div class="step">
-<h3>1 Call</h3>
-<p>Customer calls</p>
+<div class="step glass">
+<h3>1. Call</h3>
+<p>Customer calls your business</p>
 </div>
 
-<div class="step">
-<h3>2 AI Answers</h3>
-<p>Captures details</p>
+<div class="step glass">
+<h3>2. AI Responds</h3>
+<p>Captures info instantly</p>
 </div>
 
-<div class="step">
-<h3>3 Booked</h3>
-<p>Schedules job</p>
+<div class="step glass">
+<h3>3. Job Booked</h3>
+<p>Appointment gets scheduled</p>
 </div>
 
 </div>
@@ -340,7 +347,7 @@ Calculate Lost Revenue
 <!-- CTA -->
 
 <section id="contact" class="cta-section">
-<h2 class="title">Stop Losing Jobs</h2>
+<h2 class="title">Stop Losing Jobs Daily</h2>
 
 <button onclick="window.location.href='mailto:contact@bookedflow.net'">
 Book Free Audit
