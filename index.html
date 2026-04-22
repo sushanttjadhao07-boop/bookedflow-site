@@ -14,9 +14,9 @@ font-family: 'Inter', sans-serif;
 }
 
 body{
-background: radial-gradient(circle at top, #0f172a, #020617);
+background:#020617;
 color:white;
-overflow-x:hidden;
+line-height:1.5;
 }
 
 /* NAV */
@@ -24,224 +24,210 @@ overflow-x:hidden;
 nav{
 display:flex;
 justify-content:space-between;
-padding:20px 8%;
-position:fixed;
-width:100%;
-background:rgba(2,6,23,0.7);
-backdrop-filter: blur(10px);
-border-bottom:1px solid rgba(255,255,255,0.05);
-z-index:1000;
+align-items:center;
+padding:14px 5%;
+background:rgba(2,6,23,0.9);
+position:sticky;
+top:0;
+z-index:100;
 }
 
 .logo{
-font-size:20px;
+font-size:18px;
 font-weight:600;
 background:linear-gradient(90deg,#38bdf8,#8b5cf6);
 -webkit-background-clip:text;
 color:transparent;
 }
 
-nav a{
-color:#cbd5f5;
-margin-left:20px;
-text-decoration:none;
-font-size:14px;
-}
-
 .cta{
 background:linear-gradient(90deg,#38bdf8,#8b5cf6);
-padding:10px 18px;
+padding:8px 14px;
 border-radius:8px;
+font-size:13px;
 color:white;
+text-decoration:none;
 }
 
 /* HERO */
 
 .hero{
-padding:140px 8% 100px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-flex-wrap:wrap;
-}
-
-.hero-text{
-max-width:520px;
+padding:60px 5% 40px;
+text-align:center;
 }
 
 .hero h1{
-font-size:48px;
-line-height:1.2;
-background:linear-gradient(90deg,#fff,#a5b4fc);
--webkit-background-clip:text;
-color:transparent;
+font-size:28px;
+line-height:1.3;
+margin-bottom:12px;
 }
 
 .hero p{
-margin:20px 0;
 color:#94a3b8;
+font-size:14px;
+margin-bottom:20px;
 }
 
 .hero-buttons button{
-padding:14px 26px;
+width:100%;
+padding:14px;
+margin-bottom:10px;
 border:none;
 border-radius:10px;
-margin-right:10px;
-cursor:pointer;
-font-size:15px;
-transition:0.3s;
-}
-
-.demo{
+font-size:14px;
 background:linear-gradient(90deg,#38bdf8,#8b5cf6);
 color:white;
 }
 
-.demo:hover{
-transform:translateY(-2px);
-box-shadow:0 10px 25px rgba(56,189,248,0.3);
+/* VIDEO */
+
+.video-box{
+margin-top:20px;
+border-radius:12px;
+overflow:hidden;
 }
 
-/* 3D CARD */
-
-.hero-card{
-width:420px;
-background:rgba(255,255,255,0.03);
-border:1px solid rgba(255,255,255,0.08);
-padding:20px;
-border-radius:16px;
-backdrop-filter:blur(15px);
-transform-style:preserve-3d;
-transition:0.4s;
-}
-
-.hero-card:hover{
-transform:rotateY(10deg) rotateX(5deg);
-}
-
-.hero-card iframe{
+.video-box iframe{
 width:100%;
-height:240px;
-border-radius:10px;
+height:200px;
 }
 
 /* SECTIONS */
 
 section{
-padding:100px 8%;
+padding:50px 5%;
 }
 
 .title{
-font-size:34px;
+font-size:22px;
 text-align:center;
-margin-bottom:20px;
+margin-bottom:10px;
 }
 
 .subtitle{
 text-align:center;
 color:#94a3b8;
-margin-bottom:50px;
+font-size:14px;
+margin-bottom:25px;
 }
 
 /* CARDS */
 
 .grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:30px;
+display:flex;
+flex-direction:column;
+gap:15px;
 }
 
-.card{
-background:rgba(255,255,255,0.03);
-border:1px solid rgba(255,255,255,0.08);
-padding:28px;
-border-radius:16px;
-backdrop-filter:blur(12px);
-transition:0.3s;
+.card, .step{
+background:#0f172a;
+padding:18px;
+border-radius:12px;
+border:1px solid rgba(255,255,255,0.05);
 }
 
-.card:hover{
-transform:translateY(-6px);
-box-shadow:0 15px 40px rgba(139,92,246,0.2);
+.card h3, .step h3{
+color:#38bdf8;
+margin-bottom:6px;
+font-size:15px;
 }
 
-.card h3{
-color:#8b5cf6;
-margin-bottom:10px;
+.card p, .step p{
+font-size:13px;
+color:#cbd5f5;
 }
 
 /* CALCULATOR */
 
 .calc{
-background:rgba(255,255,255,0.03);
-padding:40px;
-border-radius:16px;
+background:#0f172a;
+padding:20px;
+border-radius:12px;
 text-align:center;
-max-width:600px;
-margin:auto;
-backdrop-filter:blur(12px);
 }
 
 .calc input{
+width:100%;
 padding:12px;
-margin:10px;
+margin:8px 0;
 border-radius:8px;
 border:none;
 background:#020617;
 color:white;
 }
 
-/* PROCESS */
-
-.step{
-background:rgba(255,255,255,0.03);
-padding:25px;
-border-radius:16px;
-border:1px solid rgba(255,255,255,0.08);
+.calc button{
+width:100%;
+padding:14px;
+border:none;
+border-radius:10px;
+margin-top:10px;
+background:linear-gradient(90deg,#38bdf8,#8b5cf6);
+color:white;
 }
 
 /* CTA */
 
+.cta-section{
+text-align:center;
+}
+
 .cta-section button{
-padding:16px 30px;
-font-size:16px;
+width:100%;
+padding:14px;
+font-size:14px;
 background:linear-gradient(90deg,#38bdf8,#8b5cf6);
 border:none;
 border-radius:10px;
-cursor:pointer;
-transition:0.3s;
-}
-
-.cta-section button:hover{
-transform:translateY(-3px);
-box-shadow:0 10px 30px rgba(139,92,246,0.3);
 }
 
 /* FOOTER */
 
 footer{
 text-align:center;
-padding:40px;
+padding:30px 10px;
+font-size:12px;
 color:#64748b;
-border-top:1px solid rgba(255,255,255,0.05);
 }
 
-/* MOBILE */
+/* ===== DESKTOP ENHANCEMENT ===== */
 
-@media(max-width:768px){
+@media(min-width:768px){
 
 .hero{
-flex-direction:column;
-text-align:center;
+display:flex;
+align-items:center;
+justify-content:space-between;
+text-align:left;
+padding:120px 8%;
+}
+
+.hero-text{
+max-width:500px;
 }
 
 .hero h1{
-font-size:32px;
+font-size:44px;
 }
 
-.hero-card{
-width:100%;
-margin-top:20px;
+.video-box{
+width:420px;
+}
+
+.grid{
+flex-direction:row;
+}
+
+.card, .step{
+flex:1;
+}
+
+section{
+padding:80px 8%;
+}
+
+.title{
+font-size:32px;
 }
 
 }
@@ -252,118 +238,112 @@ margin-top:20px;
 
 <nav>
 <div class="logo">Booked Flow</div>
-<div>
-<a href="#calculator">Calculator</a>
-<a href="#system">How it Works</a>
 <a href="#contact" class="cta">Book Demo</a>
-</div>
 </nav>
+
+<!-- HERO -->
 
 <section class="hero">
 
 <div class="hero-text">
-<h1>Capture Every Missed HVAC Call — Even After Hours</h1>
+<h1>Capture Every Missed HVAC Call</h1>
 
 <p>
-Stop losing emergency jobs to competitors. Our AI answers every call,
-qualifies leads, and books jobs automatically.
+Turn missed calls into booked jobs automatically — even after hours.
 </p>
 
 <div class="hero-buttons">
-<button class="demo" onclick="window.location.href='https://youtu.be/UTBsPwXg3l0'">
+<button onclick="window.location.href='https://youtu.be/UTBsPwXg3l0'">
 Watch Demo
 </button>
 
-<button class="demo" onclick="document.getElementById('calculator').scrollIntoView()">
-See Lost Revenue
+<button onclick="document.getElementById('calculator').scrollIntoView()">
+Calculate Lost Revenue
 </button>
 </div>
 </div>
 
-<div class="hero-card">
-<iframe src="https://www.youtube.com/embed/UTBsPwXg3l0" frameborder="0"></iframe>
+<div class="video-box">
+<iframe src="https://www.youtube.com/embed/UTBsPwXg3l0"></iframe>
 </div>
 
 </section>
 
+<!-- PROBLEM -->
+
 <section>
-<h2 class="title">Why HVAC Companies Lose Revenue</h2>
-<p class="subtitle">Every missed call = lost job</p>
+<h2 class="title">Why You’re Losing Jobs</h2>
 
 <div class="grid">
 
 <div class="card">
-<h3>Missed Calls</h3>
-<p>Technicians can’t answer while working.</p>
+<h3>On Jobs</h3>
+<p>You can’t answer calls while working.</p>
 </div>
 
 <div class="card">
 <h3>After Hours</h3>
-<p>Emergency calls happen when you're closed.</p>
+<p>Emergency calls come at night.</p>
 </div>
 
 <div class="card">
-<h3>Lost Jobs</h3>
-<p>Customers call the next company instantly.</p>
+<h3>Customers Leave</h3>
+<p>They call your competitor instantly.</p>
 </div>
 
 </div>
 </section>
 
+<!-- CALCULATOR -->
+
 <section id="calculator">
-<h2 class="title">Revenue Loss Calculator</h2>
+<h2 class="title">Lost Revenue Calculator</h2>
 
 <div class="calc">
 
-<p>Missed calls per week</p>
-<input id="calls" type="number" value="10">
+<input id="calls" type="number" placeholder="Missed calls/week">
 
-<p>Avg job value ($)</p>
-<input id="value" type="number" value="700">
+<input id="value" type="number" placeholder="Avg job value ($)">
 
-<br><br>
-
-<button class="demo" onclick="calculate()">Calculate</button>
+<button onclick="calculate()">Calculate</button>
 
 <h3 id="result"></h3>
 
 </div>
 </section>
 
-<section id="system">
+<!-- PROCESS -->
+
+<section>
 <h2 class="title">How It Works</h2>
 
 <div class="grid">
 
 <div class="step">
-<h3>1 Call Comes In</h3>
-<p>Customer calls your business</p>
+<h3>1 Call</h3>
+<p>Customer calls</p>
 </div>
 
 <div class="step">
 <h3>2 AI Answers</h3>
-<p>Captures job details instantly</p>
+<p>Captures details</p>
 </div>
 
 <div class="step">
-<h3>3 Booking</h3>
-<p>Schedules automatically</p>
-</div>
-
-<div class="step">
-<h3>4 You Get Alert</h3>
-<p>SMS + job info instantly</p>
+<h3>3 Booked</h3>
+<p>Schedules job</p>
 </div>
 
 </div>
 </section>
 
+<!-- CTA -->
+
 <section id="contact" class="cta-section">
-<h2 class="title">Stop Losing HVAC Jobs</h2>
-<p class="subtitle">See how many jobs you're missing</p>
+<h2 class="title">Stop Losing Jobs</h2>
 
 <button onclick="window.location.href='mailto:contact@bookedflow.net'">
-Book Free Call Audit
+Book Free Audit
 </button>
 </section>
 
@@ -373,12 +353,12 @@ Book Free Call Audit
 
 <script>
 function calculate(){
-let calls=document.getElementById("calls").value;
-let value=document.getElementById("value").value;
+let calls=document.getElementById("calls").value || 0;
+let value=document.getElementById("value").value || 0;
 let revenue=calls*value*4;
 
 document.getElementById("result").innerText =
-"You're losing about $" + revenue + " per month.";
+"You’re losing about $" + revenue + "/month";
 }
 </script>
 
