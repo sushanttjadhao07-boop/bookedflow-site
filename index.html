@@ -5,19 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Booked Flow</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Inter',sans-serif;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
 
 body{
 background:#020617;
 color:white;
+}
+
+/* GLOBAL CONTAINER */
+
+.container{
+max-width:1100px;
+margin:0 auto;
+padding:0 20px;
 }
 
 /* NAV */
@@ -26,16 +29,11 @@ nav{
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:16px 6%;
-background:rgba(2,6,23,0.8);
-backdrop-filter:blur(10px);
-position:sticky;
-top:0;
-z-index:100;
+padding:16px 0;
 }
 
 .logo{
-font-weight:600;
+font-weight:700;
 background:linear-gradient(90deg,#38bdf8,#8b5cf6);
 -webkit-background-clip:text;
 color:transparent;
@@ -43,85 +41,68 @@ color:transparent;
 
 .cta{
 background:linear-gradient(90deg,#38bdf8,#8b5cf6);
-padding:10px 16px;
+padding:10px 18px;
 border-radius:10px;
-font-size:14px;
 text-decoration:none;
 color:white;
+font-size:14px;
 }
 
 /* HERO */
 
 .hero{
-display:flex;
-flex-direction:column;
-gap:30px;
-padding:60px 6%;
+padding:70px 0;
+text-align:center;
 }
 
-.hero-text h1{
-font-size:28px;
-margin-bottom:10px;
+.hero h1{
+font-size:34px;
+margin-bottom:12px;
 }
 
-.hero-text p{
+.hero p{
 color:#94a3b8;
-margin-bottom:20px;
+margin-bottom:25px;
 }
 
 .hero-buttons{
 display:flex;
 flex-direction:column;
-gap:10px;
+gap:12px;
+align-items:center;
 }
 
-.hero-buttons button{
-padding:14px;
+.btn{
+padding:14px 22px;
 border:none;
 border-radius:10px;
 background:linear-gradient(90deg,#38bdf8,#8b5cf6);
 color:white;
 cursor:pointer;
+font-size:14px;
+width:100%;
+max-width:260px; /* prevents stretch */
 }
 
-/* GLASS CARD */
+/* GLASS */
 
 .glass{
 background:rgba(15,23,42,0.6);
 backdrop-filter:blur(20px);
 border:1px solid rgba(255,255,255,0.08);
 border-radius:16px;
-box-shadow:0 10px 40px rgba(0,0,0,0.4);
-}
-
-/* VIDEO */
-
-.video-box{
-overflow:hidden;
-}
-
-.video-box iframe{
-width:100%;
-height:220px;
-border:none;
 }
 
 /* SECTIONS */
 
 section{
-padding:60px 6%;
+padding:60px 0;
 }
 
 .title{
 text-align:center;
-font-size:24px;
-margin-bottom:10px;
-}
-
-.subtitle{
-text-align:center;
-color:#94a3b8;
-margin-bottom:30px;
+font-size:26px;
+margin-bottom:25px;
 }
 
 /* GRID */
@@ -131,21 +112,42 @@ display:grid;
 gap:16px;
 }
 
-.card, .step{
+.card{
 padding:20px;
 }
 
-.card h3, .step h3{
+.card h3{
 color:#38bdf8;
 margin-bottom:6px;
 }
 
-.card p, .step p{
+.card p{
 color:#cbd5f5;
 font-size:14px;
 }
 
+/* VIDEO */
+
+.video-box{
+padding:20px;
+text-align:center;
+max-width:700px;
+margin:0 auto;
+}
+
+.video-box iframe{
+width:100%;
+height:300px;
+border:none;
+border-radius:12px;
+}
+
 /* CALCULATOR */
+
+.calc-wrapper{
+max-width:500px;
+margin:0 auto;
+}
 
 .calc{
 padding:25px;
@@ -163,13 +165,19 @@ color:white;
 }
 
 .calc button{
-width:100%;
-padding:14px;
+padding:14px 20px;
 border:none;
 border-radius:10px;
 background:linear-gradient(90deg,#38bdf8,#8b5cf6);
 color:white;
 cursor:pointer;
+width:100%;
+max-width:250px;
+}
+
+#result{
+margin-top:15px;
+color:#38bdf8;
 }
 
 /* CTA */
@@ -179,12 +187,14 @@ text-align:center;
 }
 
 .cta-section button{
-padding:14px 20px;
+padding:14px 22px;
 border:none;
 border-radius:10px;
 background:linear-gradient(90deg,#38bdf8,#8b5cf6);
 color:white;
 cursor:pointer;
+max-width:260px;
+width:100%;
 }
 
 /* FOOTER */
@@ -196,57 +206,30 @@ color:#64748b;
 font-size:12px;
 }
 
-/* ===== DESKTOP ===== */
+/* DESKTOP */
 
 @media(min-width:768px){
 
-.hero{
-flex-direction:row;
-align-items:center;
-justify-content:space-between;
-padding:100px 10%;
-}
-
-.hero-text{
-max-width:520px;
-}
-
-.hero-text h1{
-font-size:48px;
+.hero h1{
+font-size:46px;
 }
 
 .hero-buttons{
 flex-direction:row;
-}
-
-.hero-buttons button{
-flex:1;
-}
-
-.video-box{
-width:480px;
-}
-
-.video-box iframe{
-height:270px;
+justify-content:center;
 }
 
 .grid{
 grid-template-columns:repeat(3,1fr);
 }
 
-section{
-padding:80px 10%;
-}
-
-.title{
-font-size:34px;
-}
 }
 </style>
 </head>
 
 <body>
+
+<div class="container">
 
 <nav>
 <div class="logo">Booked Flow</div>
@@ -257,24 +240,51 @@ font-size:34px;
 
 <section class="hero">
 
-<div class="hero-text">
-<h1>Capture Every Missed HVAC Call</h1>
-<p>Turn missed calls into booked jobs automatically — even after hours.</p>
+<h1>You’re Losing $5K–$20K/Month in Missed HVAC Calls</h1>
+
+<p>
+After-hours calls go to competitors. We capture and book them automatically.
+</p>
 
 <div class="hero-buttons">
-<button onclick="window.location.href='https://youtu.be/UTBsPwXg3l0'">
+<button class="btn" onclick="window.location.href='https://youtu.be/UTBsPwXg3l0'">
 Watch Demo
 </button>
-<button onclick="document.getElementById('calculator').scrollIntoView()">
-Calculate Revenue Loss
+
+<button class="btn" onclick="document.getElementById('calculator').scrollIntoView()">
+Calculate Loss
 </button>
 </div>
-</div>
+
+</section>
+
+<!-- VIDEO -->
+
+<section>
+<h2 class="title">See It In Action</h2>
 
 <div class="video-box glass">
 <iframe src="https://www.youtube.com/embed/UTBsPwXg3l0"></iframe>
 </div>
+</section>
 
+<!-- CALCULATOR -->
+
+<section id="calculator">
+<h2 class="title">Lost Revenue Calculator</h2>
+
+<div class="calc-wrapper">
+<div class="calc glass">
+
+<input id="calls" type="number" placeholder="Missed calls/week">
+<input id="value" type="number" placeholder="Avg job value ($)">
+
+<button onclick="calculate()">Calculate</button>
+
+<h3 id="result"></h3>
+
+</div>
+</div>
 </section>
 
 <!-- PROBLEM -->
@@ -286,59 +296,17 @@ Calculate Revenue Loss
 
 <div class="card glass">
 <h3>On Jobs</h3>
-<p>You can’t answer calls while working.</p>
+<p>You miss calls while working</p>
 </div>
 
 <div class="card glass">
 <h3>After Hours</h3>
-<p>Emergency calls come at night.</p>
+<p>Voicemail kills conversions</p>
 </div>
 
 <div class="card glass">
-<h3>Customers Leave</h3>
-<p>They call competitors instantly.</p>
-</div>
-
-</div>
-</section>
-
-<!-- CALCULATOR -->
-
-<section id="calculator">
-<h2 class="title">Lost Revenue Calculator</h2>
-
-<div class="calc glass">
-
-<input id="calls" type="number" placeholder="Missed calls/week">
-<input id="value" type="number" placeholder="Avg job value ($)">
-
-<button onclick="calculate()">Calculate</button>
-
-<h3 id="result"></h3>
-
-</div>
-</section>
-
-<!-- PROCESS -->
-
-<section>
-<h2 class="title">How It Works</h2>
-
-<div class="grid">
-
-<div class="step glass">
-<h3>1. Call</h3>
-<p>Customer calls your business</p>
-</div>
-
-<div class="step glass">
-<h3>2. AI Responds</h3>
-<p>Captures info instantly</p>
-</div>
-
-<div class="step glass">
-<h3>3. Job Booked</h3>
-<p>Appointment gets scheduled</p>
+<h3>Competitors Win</h3>
+<p>They answer → they get the job</p>
 </div>
 
 </div>
@@ -347,16 +315,18 @@ Calculate Revenue Loss
 <!-- CTA -->
 
 <section id="contact" class="cta-section">
-<h2 class="title">Stop Losing Jobs Daily</h2>
+<h2 class="title">Stop Losing Easy Jobs</h2>
 
 <button onclick="window.location.href='mailto:contact@bookedflow.net'">
-Book Free Audit
+Book Free Demo
 </button>
 </section>
 
 <footer>
 © 2026 Booked Flow
 </footer>
+
+</div>
 
 <script>
 function calculate(){
