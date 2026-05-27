@@ -40,20 +40,24 @@ a{text-decoration:none;color:inherit;}
 /* NAV */
 header{
   position:sticky;top:0;z-index:100;
-  padding:0 6%;
+  padding:0 4%;
   backdrop-filter:blur(20px);
   background:rgba(6,10,20,0.82);
   border-bottom:1px solid var(--border);
 }
 nav{
   display:flex;justify-content:space-between;align-items:center;
-  height:68px;max-width:1240px;margin:auto;
+  height:60px;max-width:1240px;margin:auto;
+  gap:12px;
 }
 .logo{
   font-family:'Syne',sans-serif;
-  font-size:21px;font-weight:800;letter-spacing:-0.5px;
+  font-size:clamp(16px,4vw,21px);
+  font-weight:800;letter-spacing:-0.5px;
   background:linear-gradient(135deg,#fff 40%,#93c5fd);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  white-space:nowrap;
+  flex-shrink:0;
 }
 .logo em{
   font-style:normal;
@@ -61,12 +65,18 @@ nav{
 }
 .nav-cta{
   background:var(--blue);color:#fff;
-  padding:10px 22px;border-radius:8px;
-  font-family:'Syne',sans-serif;font-size:13px;font-weight:700;
+  padding:8px 16px;
+  border-radius:8px;
+  font-family:'Syne',sans-serif;
+  font-size:clamp(11px,2.8vw,13px);
+  font-weight:700;
   letter-spacing:0.3px;
   box-shadow:0 0 22px rgba(37,99,235,0.4);
   transition:all .25s;
   position:relative;overflow:hidden;
+  white-space:nowrap;
+  flex-shrink:0;
+  line-height:1.2;
 }
 .nav-cta::after{
   content:'';position:absolute;inset:0;
@@ -471,6 +481,11 @@ footer{
 @media(max-width:480px){
   .problems-grid{border-radius:14px;}
   .cta-box{border-radius:18px;}
+  /* Nav tighter on very small screens */
+  header{padding:0 3%;}
+  nav{height:54px;}
+  .logo{font-size:15px;letter-spacing:-0.3px;}
+  .nav-cta{padding:7px 12px;font-size:11px;border-radius:7px;}
 }
 </style>
 </head>
@@ -720,8 +735,7 @@ footer{
       <div class="footer-tagline"> Automation For Real Estate Sales Teams</div>
     </div>
     <div class="footer-right">
-    
-   <div><a href="mailto:contact@bookedflow.net">contact@bookedflow.net</a></div>
+      <div><a href="mailto:contact@bookedflow.net">contact@bookedflow.net</a></div>
       <div style="margin-top:6px;font-size:11px;color:#4a5568;">© 2025 BOOKED FLOW. All rights reserved.</div>
     </div>
   </div>
