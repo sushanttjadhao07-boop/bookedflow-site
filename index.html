@@ -742,20 +742,69 @@ footer{
 </footer>
 
 <script>
-// Scroll reveal
-const io = new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
-},{threshold:0.1});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-// btn-primary arrow hover
-document.querySelectorAll('.btn-primary').forEach(btn=>{
-  const arr=btn.querySelector('.arrow');
-  if(arr){
-    btn.addEventListener('mouseenter',()=>arr.style.transform='translateX(5px)');
-    btn.addEventListener('mouseleave',()=>arr.style.transform='');
-  }
+// Reveal animation
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+    }
+  });
+},{
+  threshold:0.12
 });
+
+document.querySelectorAll('.reveal').forEach(el=>{
+  observer.observe(el);
+});
+
+// Premium tilt hover effect
+document.querySelectorAll('.feat-card,.prob-card').forEach(card=>{
+
+  card.addEventListener('mousemove',(e)=>{
+
+    const rect = card.getBoundingClientRect();
+
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const rotateY = ((x / rect.width) - 0.5) * 10;
+    const rotateX = ((y / rect.height) - 0.5) * -10;
+
+    card.style.transform = `
+      perspective(1000px)
+      rotateX(${rotateX}deg)
+      rotateY(${rotateY}deg)
+      translateY(-6px)
+    `;
+
+  });
+
+  card.addEventListener('mouseleave',()=>{
+    card.style.transform = '';
+  });
+
+});
+
+// smooth navbar glow on scroll
+window.addEventListener('scroll',()=>{
+
+  const header = document.querySelector('header');
+
+  if(window.scrollY > 20){
+
+    header.style.background = 'rgba(5,8,22,0.92)';
+    header.style.boxShadow = '0 10px 40px rgba(0,0,0,0.35)';
+
+  }else{
+
+    header.style.background = 'rgba(5,8,22,0.72)';
+    header.style.boxShadow = 'none';
+
+  }
+
+});
+
 </script>
 </body>
 </html>
