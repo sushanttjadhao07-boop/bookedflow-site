@@ -48,7 +48,7 @@ a{text-decoration:none;color:inherit;-webkit-tap-highlight-color:transparent}
 .dm{padding:22px 0}.dl{color:var(--m);font-size:11px;font-weight:700}.dh{margin-top:5px;color:var(--h);font-size:21px;font-weight:800;letter-spacing:-.03em}
 .wl{margin-top:22px;display:flex;flex-direction:column;gap:12px}
 .wr{display:grid;grid-template-columns:33px 1fr auto;align-items:center;gap:12px;padding:12px;border:1px solid #e2eaed;border-radius:13px;background:#fff}
-.wic{width:32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:9px;background:var(--pl);color:var(--p);font-size:12px;font-weight:800}
+.wic{width:32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:9px;background:var(--pl);color:var(--p);font-size:16px;line-height:1}
 .wn{color:var(--h);font-size:12px;font-weight:700}.ws{margin-top:2px;color:#8594a4;font-size:10px}
 .wst{padding:5px 8px;border-radius:7px;background:var(--gl);color:var(--g);font-size:9px;font-weight:800}
 .df{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;padding-top:16px;border-top:1px solid #e5ecef}
@@ -61,7 +61,7 @@ a{text-decoration:none;color:inherit;-webkit-tap-highlight-color:transparent}
 /* generic cards */
 .card{padding:28px;border:1px solid var(--b);border-radius:18px;background:#fff;box-shadow:var(--sh);transition:.2s}
 .card:hover{transform:translateY(-4px);box-shadow:0 18px 50px rgba(16,42,67,.1)}
-.ic{width:43px;height:43px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;border-radius:12px;background:var(--pl);color:var(--p);font-size:14px;font-weight:800}
+.ic{width:43px;height:43px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;border-radius:12px;background:var(--pl);color:var(--p);font-size:21px;line-height:1}
 .card h3,.step h3,.ii h3{color:var(--h);font-size:17px;letter-spacing:-.01em;line-height:1.35}
 .card p,.step p,.ii p{margin-top:9px;font-size:13.5px;line-height:1.75}
 .pr{background:#f7f9fd}
@@ -72,7 +72,7 @@ a{text-decoration:none;color:inherit;-webkit-tap-highlight-color:transparent}
 .hw{background:#fff;border-block:1px solid var(--b)}
 .steps{margin-top:56px;display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
 .step{padding:28px;border:1px solid var(--b);border-radius:18px;background:#f8fafd}
-.sn{width:36px;height:36px;display:flex;align-items:center;justify-content:center;margin-bottom:22px;border-radius:10px;background:var(--p);color:#fff;font-size:12px;font-weight:800}
+.sn{width:36px;height:36px;display:flex;align-items:center;justify-content:center;margin-bottom:22px;border-radius:10px;background:var(--p);color:#fff;font-size:18px;line-height:1}
 .sol{background:radial-gradient(circle at 85% 15%,rgba(75,155,170,.1),transparent 28%),#eaf2fa}
 .sol .card{min-height:230px}
 .us{background:#fff}.us .ic{background:var(--gl);color:var(--g)}
@@ -166,7 +166,7 @@ footer{background:#f3f7fb;border-top:1px solid var(--b);padding:55px 0 25px}
 <main id="home">
 <section class="hero"><div class="c"><div class="hc">
 <div>
-<div class="lbl"><i></i> Automation for Diagnostic Labs</div>
+<div class="lbl"><i></i> Workflow Automation for Diagnostic Labs</div>
 <h1 class="ht">Your lab should run on <em>systems,</em> not constant follow-ups.</h1>
 <p class="hd">BOOKED FLOW helps diagnostic laboratories automate patient communication, home sample collection, booking coordination, reminders and repetitive operational workflows.</p>
 <div class="ha">
@@ -179,10 +179,10 @@ footer{background:#f3f7fb;border-top:1px solid var(--b);padding:55px 0 25px}
 <div class="dt"><b>Patient Workflow</b><div class="ls"><i></i>Automation active</div></div>
 <div class="dm"><div class="dl">NEW REQUEST</div><div class="dh">Home Sample Collection</div>
 <div class="wl">
-<div class="wr"><div class="wic">01</div><div><div class="wn">Patient request received</div><div class="ws">WhatsApp / Website / Lead Form</div></div><div class="wst">RECEIVED</div></div>
-<div class="wr"><div class="wic">02</div><div><div class="wn">Service area checked</div><div class="ws">Pincode &amp; availability</div></div><div class="wst">VERIFIED</div></div>
-<div class="wr"><div class="wic">03</div><div><div class="wn">Collection slot coordinated</div><div class="ws">Date &amp; preferred time</div></div><div class="wst">READY</div></div>
-<div class="wr"><div class="wic">04</div><div><div class="wn">Team notified</div><div class="ws">Coordinator / Technician</div></div><div class="wst">SENT</div></div>
+<div class="wr"><div class="wic">📩</div><div><div class="wn">Patient request received</div><div class="ws">WhatsApp / Website / Lead Form</div></div><div class="wst">RECEIVED</div></div>
+<div class="wr"><div class="wic">📍</div><div><div class="wn">Service area checked</div><div class="ws">Pincode &amp; availability</div></div><div class="wst">VERIFIED</div></div>
+<div class="wr"><div class="wic">🗓️</div><div><div class="wn">Collection slot coordinated</div><div class="ws">Date &amp; preferred time</div></div><div class="wst">READY</div></div>
+<div class="wr"><div class="wic">🔔</div><div><div class="wn">Team notified</div><div class="ws">Coordinator / Technician</div></div><div class="wst">SENT</div></div>
 </div></div>
 <div class="df"><div class="ms"><strong>Patient</strong><span>Communication</span></div><div class="ms"><strong>Booking</strong><span>Coordination</span></div><div class="ms"><strong>Team</strong><span>Notification</span></div></div>
 </div></div>
@@ -200,10 +200,10 @@ footer{background:#f3f7fb;border-top:1px solid var(--b);padding:55px 0 25px}
 <h2 class="ttl">Your team shouldn't have to coordinate everything manually.</h2>
 <p class="dsc">Diagnostic laboratories handle hundreds of small operational actions every day. When those actions depend entirely on people, delays and missed follow-ups become harder to avoid.</p></div>
 <div class="g2">
-<article class="card"><div class="ic">01</div><h3>Repetitive Patient Questions</h3><p>Staff repeatedly answer questions about tests, home collection, availability, preparation and booking.</p></article>
-<article class="card"><div class="ic">02</div><h3>Manual Home Collection</h3><p>Collection requests can require coordination between patients, coordinators and technicians.</p></article>
-<article class="card"><div class="ic">03</div><h3>Follow-up Gaps</h3><p>Confirmations, reminders and pending actions can easily depend on someone remembering to follow up.</p></article>
-<article class="card"><div class="ic">04</div><h3>Scattered Information</h3><p>Patient requests can become spread across WhatsApp, calls, spreadsheets and different operational systems.</p></article>
+<article class="card"><div class="ic">💬</div><h3>Repetitive Patient Questions</h3><p>Staff repeatedly answer questions about tests, home collection, availability, preparation and booking.</p></article>
+<article class="card"><div class="ic">🏠</div><h3>Manual Home Collection</h3><p>Collection requests can require coordination between patients, coordinators and technicians.</p></article>
+<article class="card"><div class="ic">⏰</div><h3>Follow-up Gaps</h3><p>Confirmations, reminders and pending actions can easily depend on someone remembering to follow up.</p></article>
+<article class="card"><div class="ic">🗂️</div><h3>Scattered Information</h3><p>Patient requests can become spread across WhatsApp, calls, spreadsheets and different operational systems.</p></article>
 </div></div></div></section>
 
 <section class="s hw" id="how-it-works"><div class="c">
@@ -211,10 +211,10 @@ footer{background:#f3f7fb;border-top:1px solid var(--b);padding:55px 0 25px}
 <h2 class="ttl">Turn a patient request into an organized workflow.</h2>
 <p class="dsc">BOOKED FLOW connects the repetitive steps between the patient, your operations team and the next action.</p></div>
 <div class="steps">
-<article class="step"><div class="sn">01</div><h3>Capture</h3><p>Receive patient requests from WhatsApp, website forms, lead forms or other connected channels.</p></article>
-<article class="step"><div class="sn">02</div><h3>Understand</h3><p>Collect the information required to understand the request and determine the appropriate next step.</p></article>
-<article class="step"><div class="sn">03</div><h3>Coordinate</h3><p>Apply your workflow rules to coordinate slots, service areas, team assignments and operational actions.</p></article>
-<article class="step"><div class="sn">04</div><h3>Follow Up</h3><p>Automatically send confirmations, reminders and notifications when the workflow requires another action.</p></article>
+<article class="step"><div class="sn">📥</div><h3>Capture</h3><p>Receive patient requests from WhatsApp, website forms, lead forms or other connected channels.</p></article>
+<article class="step"><div class="sn">🔍</div><h3>Understand</h3><p>Collect the information required to understand the request and determine the appropriate next step.</p></article>
+<article class="step"><div class="sn">🔄</div><h3>Coordinate</h3><p>Apply your workflow rules to coordinate slots, service areas, team assignments and operational actions.</p></article>
+<article class="step"><div class="sn">✅</div><h3>Follow Up</h3><p>Automatically send confirmations, reminders and notifications when the workflow requires another action.</p></article>
 </div></div></section>
 
 <section class="s sol" id="solutions"><div class="c">
@@ -222,12 +222,12 @@ footer{background:#f3f7fb;border-top:1px solid var(--b);padding:55px 0 25px}
 <h2 class="ttl">Practical automation for the work your lab does every day.</h2>
 <p class="dsc">Start with one workflow. Improve it. Then connect the next. The goal is not to replace your team — it is to remove unnecessary manual coordination from their day.</p></div>
 <div class="g3">
-<article class="card"><div class="ic">HC</div><h3>Home Sample Collection</h3><p>Automate collection requests, pincode checks, slot coordination, technician notifications and patient updates.</p></article>
-<article class="card"><div class="ic">WA</div><h3>WhatsApp Automation</h3><p>Handle common patient communication and send automated confirmations, reminders and workflow updates.</p></article>
-<article class="card"><div class="ic">BK</div><h3>Booking Workflows</h3><p>Turn incoming requests into structured booking workflows instead of relying on repeated manual coordination.</p></article>
-<article class="card"><div class="ic">RM</div><h3>Patient Reminders</h3><p>Trigger reminders for appointments, collection slots and other important patient actions.</p></article>
-<article class="card"><div class="ic">TN</div><h3>Team Notifications</h3><p>Automatically route relevant information to coordinators, technicians and other members of your team.</p></article>
-<article class="card"><div class="ic">CRM</div><h3>Lead &amp; Patient Management</h3><p>Structure incoming enquiries and connect each request to the right next action.</p></article>
+<article class="card"><div class="ic">🏠</div><h3>Home Sample Collection</h3><p>Automate collection requests, pincode checks, slot coordination, technician notifications and patient updates.</p></article>
+<article class="card"><div class="ic">💬</div><h3>WhatsApp Automation</h3><p>Handle common patient communication and send automated confirmations, reminders and workflow updates.</p></article>
+<article class="card"><div class="ic">📅</div><h3>Booking Workflows</h3><p>Turn incoming requests into structured booking workflows instead of relying on repeated manual coordination.</p></article>
+<article class="card"><div class="ic">⏰</div><h3>Patient Reminders</h3><p>Trigger reminders for appointments, collection slots and other important patient actions.</p></article>
+<article class="card"><div class="ic">🔔</div><h3>Team Notifications</h3><p>Automatically route relevant information to coordinators, technicians and other members of your team.</p></article>
+<article class="card"><div class="ic">👥</div><h3>Lead &amp; Patient Management</h3><p>Structure incoming enquiries and connect each request to the right next action.</p></article>
 </div></div></section>
 
 <section class="s us" id="use-cases"><div class="c">
@@ -235,12 +235,12 @@ footer{background:#f3f7fb;border-top:1px solid var(--b);padding:55px 0 25px}
 <h2 class="ttl">Automate the repetitive parts of your operation.</h2>
 <p class="dsc">Designed for the real-world coordination that happens between patients, collection teams and lab staff.</p></div>
 <div class="g3">
-<article class="card"><div class="ic">01</div><h3>Home Collection Booking</h3><p>Patient request → service area check → slot → assignment → confirmation.</p></article>
-<article class="card"><div class="ic">02</div><h3>Patient Enquiries</h3><p>Automatically handle common questions and route requests that need human attention.</p></article>
-<article class="card"><div class="ic">03</div><h3>Appointment Confirmation</h3><p>Send structured confirmations and keep patients informed about their next step.</p></article>
-<article class="card"><div class="ic">04</div><h3>Technician Coordination</h3><p>Send collection information to the appropriate person without repeatedly copying details.</p></article>
-<article class="card"><div class="ic">05</div><h3>Follow-up Workflows</h3><p>Trigger follow-up actions when a patient request or operational task remains incomplete.</p></article>
-<article class="card"><div class="ic">06</div><h3>Internal Notifications</h3><p>Alert the right team member when an operational action requires attention.</p></article>
+<article class="card"><div class="ic">🏠</div><h3>Home Collection Booking</h3><p>Patient request → service area check → slot → assignment → confirmation.</p></article>
+<article class="card"><div class="ic">💬</div><h3>Patient Enquiries</h3><p>Automatically handle common questions and route requests that need human attention.</p></article>
+<article class="card"><div class="ic">✅</div><h3>Appointment Confirmation</h3><p>Send structured confirmations and keep patients informed about their next step.</p></article>
+<article class="card"><div class="ic">🧑‍⚕️</div><h3>Technician Coordination</h3><p>Send collection information to the appropriate person without repeatedly copying details.</p></article>
+<article class="card"><div class="ic">🔁</div><h3>Follow-up Workflows</h3><p>Trigger follow-up actions when a patient request or operational task remains incomplete.</p></article>
+<article class="card"><div class="ic">🔔</div><h3>Internal Notifications</h3><p>Alert the right team member when an operational action requires attention.</p></article>
 </div></div></section>
 
 <section class="s cmp"><div class="c">
@@ -258,10 +258,10 @@ footer{background:#f3f7fb;border-top:1px solid var(--b);padding:55px 0 25px}
 <h2 class="ttl">Connect the systems you already use.</h2>
 <p class="dsc">Automation should fit around your existing operation. We can design workflows around the communication, calendar, spreadsheet, CRM and other tools your lab already uses.</p></div>
 <div class="ib">
-<div class="ii"><div class="ic">WA</div><h3>WhatsApp</h3><p>Patient communication, confirmations, reminders and workflow updates.</p></div>
-<div class="ii"><div class="ic">GS</div><h3>Google Workspace</h3><p>Connect calendars, spreadsheets and other Google-based operational workflows.</p></div>
-<div class="ii"><div class="ic">DB</div><h3>CRM &amp; Databases</h3><p>Move structured information into the systems your team already uses.</p></div>
-<div class="ii"><div class="ic">API</div><h3>Custom Systems</h3><p>Build connections around your existing software and operational requirements.</p></div>
+<div class="ii"><div class="ic">💬</div><h3>WhatsApp</h3><p>Patient communication, confirmations, reminders and workflow updates.</p></div>
+<div class="ii"><div class="ic">📊</div><h3>Google Workspace</h3><p>Connect calendars, spreadsheets and other Google-based operational workflows.</p></div>
+<div class="ii"><div class="ic">🗄️</div><h3>CRM &amp; Databases</h3><p>Move structured information into the systems your team already uses.</p></div>
+<div class="ii"><div class="ic">🔌</div><h3>Custom Systems</h3><p>Build connections around your existing software and operational requirements.</p></div>
 </div>
 <p class="in">Actual integrations depend on your current systems, access and workflow requirements.</p>
 </div></section>
