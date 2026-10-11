@@ -422,6 +422,15 @@ summary{font-size:16px}details p{padding-right:4px}
 .tc,.cf{top:auto;right:auto;bottom:auto}
 .chat .chat-b{height:320px}
 }
+
+/* keep the floating WhatsApp button from covering the chat controls on phones */
+.fab{transition:transform .2s,box-shadow .2s,opacity .25s}
+.fab.hide{opacity:0;pointer-events:none;transform:scale(.8)}
+@media(max-width:640px){
+.reply{padding:12px 14px 14px}
+.rb{flex:1 1 100%}
+.ap{padding:12px 14px;margin:0 auto}
+}
 </style>
 </head>
 <body>
@@ -1044,6 +1053,13 @@ var demoSim=Sim($("#msgs"),$("#reply"),{
 new IntersectionObserver(function(es,o){es.forEach(function(e){
   if(e.isIntersecting&&!started){started=true;demoSim.start(700);o.disconnect()}
 })},{threshold:.5}).observe($(".phone"));
+/* hide the WhatsApp button while a chat simulation is on screen (phones/tablets) */
+var fab=$(".fab"),fabT=[$(".chat"),$(".phone")];
+function updFab(){
+  var hide=innerWidth<=900&&fabT.some(function(el){var r=el.getBoundingClientRect();return r.top<innerHeight*.85&&r.bottom>innerHeight*.15});
+  fab.classList.toggle("hide",hide);
+}
+addEventListener("scroll",updFab,{passive:true});addEventListener("resize",updFab);updFab();
 })();
 </script>
 </body>
