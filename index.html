@@ -2,322 +2,1001 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BOOKED FLOW | Diagnostic Lab Automation</title>
-<meta name="description" content="BOOKED FLOW helps diagnostic laboratories automate patient communication, home sample collection, bookings, reminders and operational workflows.">
-<meta name="theme-color" content="#eef3fa">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Booked Flow | AI Automation for Diagnostic Labs in India</title>
+<meta name="description" content="Booked Flow automates WhatsApp test booking, patient queries, home sample collection and technician coordination for diagnostic laboratories in India.">
+<meta name="theme-color" content="#eaf0f6">
+<link rel="canonical" href="https://bookedflow.net/">
+<meta property="og:title" content="Booked Flow | AI Automation for Diagnostic Labs">
+<meta property="og:description" content="Automate the repetitive work. Serve more patients. Run your lab more efficiently.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://bookedflow.net/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+<script>document.documentElement.className+=" js"</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"Organization","name":"Booked Flow","url":"https://bookedflow.net","email":"contact@bookedflow.net","telephone":"+919356992913","description":"AI automation for diagnostic laboratories in India."},
+{"@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Can patients book tests through WhatsApp?","acceptedAnswer":{"@type":"Answer","text":"Yes. Patients message your lab on WhatsApp, and the assistant collects the tests, mode of collection, address and preferred time, then confirms the booking."}},
+{"@type":"Question","name":"Can you automate home sample collection coordination?","acceptedAnswer":{"@type":"Answer","text":"Yes. Requests are captured, service availability is checked, a slot is coordinated, the technician is notified and the patient receives a confirmation."}},
+{"@type":"Question","name":"Can you build custom workflows?","acceptedAnswer":{"@type":"Answer","text":"Yes. Workflows are designed around how your laboratory already operates."}}]}]}
+</script>
 <style>
-:root{--p:#0b6680;--pd:#084d61;--pl:#e6f3f7;--g:#2f855a;--gl:#e9f7ef;--wa:#1fa855;--wad:#168a44;--h:#12233a;--t:#52657a;--m:#75869a;--bg:#eef3fa;--w:#fff;--b:#d9e3ee;--sh:0 8px 25px rgba(16,42,67,.06);--shl:0 28px 70px rgba(16,42,67,.14)}
+:root{
+--bg:#eaf0f6;--surface:#fff;--ink:#0b1a30;--body:#4b5b70;--muted:#7b8a9c;--line:#d9e2ec;--soft:#e3eaf2;
+--acc:#0b6e8f;--acc-d:#07566f;--acc-l:#e6f2f6;--acc-xl:#eef6f9;--ok:#178a5c;--ok-l:#e5f5ed;--amber:#b7791f;--amber-l:#fbf1dd;
+--wa:#25a65b;--chat:#eef2ee;
+--r-s:10px;--r-m:16px;--r-l:24px;
+--sh-1:0 1px 2px rgba(11,26,48,.04),0 4px 14px rgba(11,26,48,.04);
+--sh-2:0 2px 4px rgba(11,26,48,.04),0 18px 48px rgba(11,26,48,.10);
+--sh-3:0 4px 8px rgba(11,26,48,.05),0 40px 90px rgba(11,26,48,.16);
+--head:Manrope,Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+--text:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+--nav:72px}
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--t);background:var(--bg);line-height:1.65;overflow-x:hidden}
-a{text-decoration:none;color:inherit;-webkit-tap-highlight-color:transparent}
-.c{width:min(1180px,calc(100% - 48px));margin:0 auto}
-.s{padding:110px 0}
-.lbl{display:inline-flex;align-items:center;gap:8px;padding:7px 13px;border:1px solid #c5d9ea;border-radius:999px;background:rgba(255,255,255,.8);color:var(--p);font-size:12px;font-weight:700;margin-bottom:22px}
-.lbl i{width:6px;height:6px;border-radius:50%;background:var(--p)}
-.ttl{color:var(--h);font-size:clamp(32px,5vw,58px);line-height:1.08;letter-spacing:-.045em;font-weight:800}
-.dsc{max-width:700px;margin-top:20px;font-size:17px;line-height:1.8}
-.ct{text-align:center}.ct .dsc{margin-left:auto;margin-right:auto}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:calc(var(--nav) + 12px)}
+body{font-family:var(--text);color:var(--body);background:var(--bg);line-height:1.65;font-size:16px;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none;-webkit-tap-highlight-color:transparent}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+:focus-visible{outline:2px solid var(--acc);outline-offset:3px;border-radius:6px}
+.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.i.s{width:16px;height:16px}.i.f{fill:currentColor;stroke:none}
+.wrap{width:min(1200px,calc(100% - 48px));margin:0 auto}
+.sec{padding:120px 0}
+h1,h2,h3,h4{font-family:var(--head);color:var(--ink);font-weight:700}
+h2{font-size:clamp(30px,3.9vw,46px);line-height:1.08;letter-spacing:-.035em;text-wrap:balance}
+h3{letter-spacing:-.02em;line-height:1.3}
+.lead{font-size:18px;line-height:1.7;max-width:640px;margin-top:18px}
+.tag{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;color:var(--acc);margin-bottom:18px}
+.tag:before{content:"";width:18px;height:2px;border-radius:2px;background:var(--acc)}
+.head{max-width:760px}.head.c{margin-inline:auto;text-align:center}.head.c .lead{margin-inline:auto}.head.c .tag{justify-content:center}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:0 24px;border-radius:12px;font-weight:600;font-size:15px;transition:transform .2s,box-shadow .2s,background .2s,border-color .2s;white-space:nowrap}
+.btn-p{background:var(--ink);color:#fff;box-shadow:0 1px 2px rgba(11,26,48,.2),0 10px 24px rgba(11,26,48,.18)}
+.btn-p:hover{background:#142946;transform:translateY(-2px);box-shadow:0 1px 2px rgba(11,26,48,.2),0 16px 32px rgba(11,26,48,.22)}
+.btn-a{background:var(--acc);color:#fff;box-shadow:0 10px 24px rgba(11,110,143,.25)}
+.btn-a:hover{background:var(--acc-d);transform:translateY(-2px)}
+.btn-s{background:var(--surface);color:var(--ink);border:1px solid var(--line);box-shadow:var(--sh-1)}
+.btn-s:hover{border-color:#b9c8d6;transform:translateY(-2px)}
+.btn .i{transition:transform .2s}.btn:hover .i.go{transform:translateX(3px)}
+.link{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14.5px;color:var(--acc)}
+.link .i{transition:transform .2s}.link:hover .i{transform:translateX(4px)}
+
 /* nav */
-.nav{position:fixed;z-index:1000;top:0;left:0;width:100%;height:72px;background:rgba(255,255,255,.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--b);transition:box-shadow .25s}
-.nav.sc{box-shadow:0 8px 30px rgba(16,42,67,.08)}
-.ni{height:100%;display:flex;align-items:center;justify-content:space-between;gap:16px}
-.brand{color:var(--h);font-size:21px;font-weight:850;letter-spacing:-.05em}.brand span{color:var(--p)}
-.nl{display:flex;gap:34px;font-size:14px;font-weight:600;color:#5c7084}
-.nl a:hover{color:var(--p)}
-.btn{min-height:50px;display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:13px 22px;border-radius:12px;font-size:14px;font-weight:700;transition:.2s;text-align:center}
-.bp{background:var(--p);color:#fff;box-shadow:0 12px 25px rgba(11,102,128,.2)}.bp:hover{background:var(--pd);transform:translateY(-2px)}
-.bw{background:var(--wa);color:#fff;box-shadow:0 12px 25px rgba(31,168,85,.28)}.bw:hover{background:var(--wad);transform:translateY(-2px)}
-.bs{background:#fff;color:var(--h);border:1px solid var(--b);box-shadow:var(--sh)}.bs:hover{transform:translateY(-2px);border-color:#a9c3d6}
-.nb{min-height:0;padding:11px 18px;font-size:14px}
-.wi{width:18px;height:18px;fill:currentColor;flex:none}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav);padding-top:env(safe-area-inset-top,0px);background:rgba(234,240,246,.82);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid transparent;transition:border-color .25s,background .25s}
+.nav.sc{border-color:var(--line);background:rgba(255,255,255,.9)}
+.nav-in{height:var(--nav);display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo{display:flex;align-items:center;gap:11px;font-family:var(--head);font-weight:800;font-size:19px;letter-spacing:-.03em;color:var(--ink)}
+.logo-m{width:32px;height:32px;border-radius:9px;background:var(--ink);display:grid;place-items:center;color:#fff}
+.logo-m svg{width:18px;height:18px}
+.links{display:flex;gap:34px}
+.links a{font-size:14.5px;font-weight:500;color:var(--body);position:relative;padding:6px 0;transition:color .2s}
+.links a:after{content:"";position:absolute;left:0;bottom:0;height:2px;width:100%;background:var(--acc);transform:scaleX(0);transform-origin:left;transition:transform .25s}
+.links a:hover{color:var(--ink)}.links a:hover:after{transform:scaleX(1)}
+.nav-cta{display:flex;align-items:center;gap:10px}.nav-cta .btn{min-height:44px;padding:0 20px;font-size:14px}
+.burger{display:none;width:44px;height:44px;border-radius:12px;border:1px solid var(--line);background:#fff;position:relative}
+.burger span{position:absolute;left:13px;right:13px;height:2px;border-radius:2px;background:var(--ink);transition:.25s}
+.burger span:nth-child(1){top:16px}.burger span:nth-child(2){top:21px}.burger span:nth-child(3){top:26px}
+.nav.open .burger span:nth-child(1){top:21px;transform:rotate(45deg)}
+.nav.open .burger span:nth-child(2){opacity:0}
+.nav.open .burger span:nth-child(3){top:21px;transform:rotate(-45deg)}
+.prog{position:absolute;left:0;bottom:-1px;height:2px;width:100%;background:var(--acc);transform:scaleX(0);transform-origin:left}
+.menu{display:none}
+
 /* hero */
-.hero{min-height:840px;padding-top:72px;display:flex;align-items:center;overflow:hidden;position:relative;background:radial-gradient(circle at 10% 15%,rgba(99,102,241,.10),transparent 32%),radial-gradient(circle at 92% 20%,rgba(20,150,170,.14),transparent 30%),linear-gradient(135deg,#eaf1fb,#f4f8fd 55%,#e9f6f4)}
-.hero:before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(40,90,140,.16) 1.2px,transparent 1.2px);background-size:26px 26px;-webkit-mask-image:linear-gradient(180deg,#000,transparent 85%);mask-image:linear-gradient(180deg,#000,transparent 85%)}
-.hc{position:relative;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:64px;padding:80px 0}
-.ht{color:var(--h);font-size:clamp(40px,6vw,76px);line-height:1;letter-spacing:-.055em;font-weight:850}.ht em{font-style:normal;color:var(--p)}
-.hd{max-width:620px;margin-top:26px;color:#5c7084;font-size:18px;line-height:1.8}
-.ha{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
-.hn{display:flex;align-items:center;gap:9px;margin-top:22px;color:#7b8c9d;font-size:12px}
-.hn i{width:7px;height:7px;border-radius:50%;background:#3d9b73;box-shadow:0 0 0 4px rgba(61,155,115,.12);flex:none}
-.wv{position:relative;display:flex;justify-content:center}
-.dash{position:relative;width:min(500px,100%);padding:22px;border:1px solid #cfdcea;border-radius:25px;background:rgba(255,255,255,.92);box-shadow:var(--shl);transform:none;text-align:left}
-.dt{display:flex;justify-content:space-between;align-items:center;padding-bottom:16px;border-bottom:1px solid #e5ecef}
-.dt b{color:var(--h);font-size:13px}.ls{display:flex;align-items:center;gap:6px;color:var(--g);font-size:11px;font-weight:700}.ls i{width:6px;height:6px;border-radius:50%;background:#3a9b71}
-.dm{padding:22px 0}.dl{color:var(--m);font-size:11px;font-weight:700}.dh{margin-top:5px;color:var(--h);font-size:21px;font-weight:800;letter-spacing:-.03em}
-.wl{margin-top:22px;display:flex;flex-direction:column;gap:12px}
-.wr{display:grid;grid-template-columns:33px 1fr auto;align-items:center;gap:12px;padding:12px;border:1px solid #e2eaed;border-radius:13px;background:#fff}
-.wic{width:32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:9px;background:var(--pl);color:var(--p);font-size:16px;line-height:1}
-.wn{color:var(--h);font-size:12px;font-weight:700}.ws{margin-top:2px;color:#8594a4;font-size:10px}
-.wst{padding:5px 8px;border-radius:7px;background:var(--gl);color:var(--g);font-size:9px;font-weight:800}
-.df{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;padding-top:16px;border-top:1px solid #e5ecef}
-.ms{padding:12px;border-radius:12px;background:#f2f6fa}.ms strong{display:block;color:var(--h);font-size:16px}.ms span{color:#8190a0;font-size:10px}
-/* value */
-.vb{background:#fff;border-block:1px solid var(--b);padding:34px 0}
-.vg{display:grid;grid-template-columns:repeat(4,1fr)}
-.vi{text-align:center;padding:5px 22px;border-right:1px solid var(--b)}.vi:last-child{border:0}
-.vn{color:var(--p);font-size:17px;font-weight:800}.vl{margin-top:4px;color:#738498;font-size:12px}
-/* generic cards */
-.card{padding:28px;border:1px solid var(--b);border-radius:18px;background:#fff;box-shadow:var(--sh);transition:.2s}
-.card:hover{transform:translateY(-4px);box-shadow:0 18px 50px rgba(16,42,67,.1)}
-.ic{width:43px;height:43px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;border-radius:12px;background:var(--pl);color:var(--p);font-size:21px;line-height:1}
-.card h3,.step h3,.ii h3{color:var(--h);font-size:17px;letter-spacing:-.01em;line-height:1.35}
-.card p,.step p,.ii p{margin-top:9px;font-size:13.5px;line-height:1.75}
-.pr{background:#f7f9fd}
-.pl{display:grid;grid-template-columns:.8fr 1.2fr;gap:80px;align-items:start}
-.pc{position:sticky;top:105px}
-.g2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-.g3{margin-top:56px;display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
-.hw{background:#fff;border-block:1px solid var(--b)}
-.steps{margin-top:56px;display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
-.step{padding:28px;border:1px solid var(--b);border-radius:18px;background:#f8fafd}
-.sn{width:36px;height:36px;display:flex;align-items:center;justify-content:center;margin-bottom:22px;border-radius:10px;background:var(--p);color:#fff;font-size:18px;line-height:1}
-.sol{background:radial-gradient(circle at 85% 15%,rgba(75,155,170,.1),transparent 28%),#eaf2fa}
-.sol .card{min-height:230px}
-.us{background:#fff}.us .ic{background:var(--gl);color:var(--g)}
-.cmp{background:#e4edf8;border-block:1px solid #d3e0ee}
-.cg{margin-top:52px;display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.cc{padding:35px;border-radius:21px;background:#fff;border:1px solid var(--b);box-shadow:var(--sh)}
-.cc.af{border-color:#bfe0cf;background:#fbfefc}
-.cl{display:inline-block;padding:6px 10px;border-radius:8px;background:#eef1f5;color:#65788b;font-size:10px;font-weight:800;letter-spacing:.05em}
-.af .cl{background:var(--gl);color:var(--g)}
-.cc h3{margin-top:18px;color:var(--h);font-size:22px;letter-spacing:-.025em;line-height:1.3}
-.cc ul{margin-top:22px;display:grid;gap:13px}
-.cc li{list-style:none;display:flex;gap:11px;font-size:14px;line-height:1.55}
-.cc li:before{content:"✓";flex:none;width:20px;height:20px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:#edf3f6;color:#65788b;font-size:10px;font-weight:800}
-.af li:before{background:var(--gl);color:var(--g)}
-.int{background:#fff}
-.ib{margin-top:56px;display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--b);border-radius:21px;overflow:hidden}
-.ii{padding:32px 27px;border-right:1px solid var(--b)}.ii:last-child{border:0}
-.in{margin-top:20px;text-align:center;color:#8795a5;font-size:12px}
-.faq-s{background:#f4f8fc;border-top:1px solid var(--b)}
-.fl{max-width:820px;margin:52px auto 0}
-details{border-bottom:1px solid var(--b);padding:20px 0}
-summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:25px;color:var(--h);font-size:16px;font-weight:700}
+.hero{padding:calc(var(--nav) + 64px) 0 40px;position:relative;overflow:hidden;background:radial-gradient(ellipse 60% 55% at 85% 10%,rgba(11,110,143,.12),transparent 70%),radial-gradient(ellipse 50% 45% at 0% 0%,rgba(255,255,255,.9),transparent 70%),linear-gradient(180deg,#e6eef6 0,var(--bg) 100%)}
+.hero:before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:64px 64px;opacity:.55;-webkit-mask-image:radial-gradient(ellipse 70% 60% at 70% 30%,#000,transparent 75%);mask-image:radial-gradient(ellipse 70% 60% at 70% 30%,#000,transparent 75%)}
+.hero-g{position:relative;display:grid;grid-template-columns:1fr 1.05fr;gap:56px;align-items:center}
+.pill{display:inline-flex;align-items:center;gap:10px;padding:8px 16px;border:1px solid var(--line);border-radius:999px;background:#fff;box-shadow:var(--sh-1);font-size:13.5px;font-weight:500;color:var(--ink)}
+.pill b{background:var(--acc-l);color:var(--acc);padding:3px 10px;border-radius:999px;font-weight:600;font-size:12.5px}
+.hero h1{font-size:clamp(38px,5.2vw,66px);line-height:1.03;letter-spacing:-.045em;margin-top:26px;text-wrap:balance}
+.hero .sub{font-size:18.5px;line-height:1.7;margin-top:24px;max-width:560px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.note{display:flex;gap:10px;align-items:flex-start;margin-top:26px;font-size:14px;color:var(--muted);max-width:480px}
+.note .i{color:var(--ok);margin-top:2px}
+
+.stage{position:relative;height:600px}
+.glow{position:absolute;inset:6% 4%;border-radius:40px;background:linear-gradient(160deg,#dcecf3,#f8fbfd 70%);border:1px solid var(--line)}
+.chat{position:absolute;left:0;top:30px;width:316px;border-radius:26px;background:#fff;border:1px solid var(--line);box-shadow:var(--sh-3);overflow:hidden;z-index:2}
+.chat-h{display:flex;align-items:center;gap:11px;padding:14px 16px;border-bottom:1px solid var(--line)}
+.av{width:38px;height:38px;border-radius:50%;background:var(--acc-l);color:var(--acc);display:grid;place-items:center;flex:none}
+.chat-h b{display:block;font-size:14px;color:var(--ink);line-height:1.2}
+.chat-h small{font-size:12px;color:var(--ok);display:flex;align-items:center;gap:6px}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--ok);display:inline-block}
+.chat-b{padding:16px 14px 18px;background:var(--chat);display:flex;flex-direction:column;gap:9px;min-height:392px}
+.b{max-width:84%;padding:9px 12px;border-radius:14px;font-size:13.5px;line-height:1.45;color:var(--ink);box-shadow:0 1px 1px rgba(11,26,48,.06)}
+.b.in{background:#fff;border-top-left-radius:4px;align-self:flex-start}
+.b.out{background:#d9f3e2;border-top-right-radius:4px;align-self:flex-end}
+.b time{display:block;text-align:right;font-size:10.5px;color:var(--muted);margin-top:3px}
+.hb{opacity:0;transform:translateY(8px);animation:pop .5s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:calc(var(--d)*1s + .5s)}
+@keyframes pop{to{opacity:1;transform:none}}
+.card-f{position:absolute;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--sh-2);padding:16px 18px;z-index:3}
+.bk{right:0;top:0;width:292px}
+.bk-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.bk-h b{font-size:13px;color:var(--ink)}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:11.5px;font-weight:600;background:var(--ok-l);color:var(--ok)}
+.chip.am{background:var(--amber-l);color:var(--amber)}.chip.bl{background:var(--acc-l);color:var(--acc)}
+.rows{display:grid;gap:9px}
+.row{display:flex;justify-content:space-between;gap:12px;font-size:12.5px;padding-bottom:9px;border-bottom:1px dashed var(--line)}
+.row:last-child{border:0;padding-bottom:0}.row span{color:var(--muted)}.row b{color:var(--ink);font-weight:600;text-align:right}
+.tc{right:22px;top:300px;width:268px;display:flex;gap:13px;align-items:center}
+.tc .av{width:42px;height:42px;background:var(--ink);color:#fff;font-weight:700;font-size:14px;font-family:var(--head)}
+.tc b{font-size:13.5px;color:var(--ink);display:block;line-height:1.3}.tc small{font-size:12px;color:var(--muted)}
+.cf{right:60px;bottom:26px;display:flex;align-items:center;gap:11px;padding:12px 16px;font-size:13px;font-weight:600;color:var(--ink)}
+.cf .ck{width:26px;height:26px;border-radius:50%;background:var(--ok);color:#fff;display:grid;place-items:center}
+.cf .ck .i{width:14px;height:14px;stroke-width:2.6}
+.pl{position:absolute;left:30px;bottom:18px;display:flex;gap:8px;z-index:3}
+.pl span{font-size:12px;font-weight:600;background:#fff;border:1px solid var(--line);border-radius:999px;padding:5px 12px;color:var(--body);box-shadow:var(--sh-1)}
+.fl{animation:fl 6s ease-in-out infinite}.fl2{animation:fl 7s ease-in-out infinite reverse}
+@keyframes fl{50%{transform:translateY(-6px)}}
+.bk.hb,.tc.hb,.cf.hb{animation:pop .6s cubic-bezier(.2,.8,.2,1) forwards,fl 6s ease-in-out 2.5s infinite}
+
+/* pipeline */
+.pipe{position:relative;margin-top:56px;background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:var(--sh-1);padding:22px 26px;overflow-x:auto}
+.pipe ol{list-style:none;display:flex;align-items:center;min-width:900px}
+.pipe li{display:flex;align-items:center;flex:1}
+.pipe li:last-child{flex:none}
+.pn{display:flex;align-items:center;gap:10px;font-size:13.5px;font-weight:600;color:var(--ink);white-space:nowrap}
+.pn span{width:34px;height:34px;border-radius:10px;background:var(--acc-xl);border:1px solid #cfe5ec;color:var(--acc);display:grid;place-items:center;flex:none}
+.pn.end span{background:var(--ok);border-color:var(--ok);color:#fff}
+.pc{flex:1;height:2px;margin:0 14px;background:repeating-linear-gradient(90deg,#c7d3de 0 6px,transparent 6px 11px);position:relative;min-width:18px}
+.pc:after{content:"";position:absolute;top:-2px;left:0;width:6px;height:6px;border-radius:50%;background:var(--acc);animation:run 3.2s linear infinite;animation-delay:calc(var(--k)*.45s)}
+@keyframes run{0%{left:0;opacity:0}15%{opacity:1}85%{opacity:1}100%{left:calc(100% - 6px);opacity:0}}
+
+/* problem */
+.prob-g{display:grid;grid-template-columns:.9fr 1.1fr;gap:80px;align-items:start}
+.prob-l{position:sticky;top:120px}
+.plist{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.pi{padding:22px;border:1px solid var(--line);border-radius:var(--r-m);background:#fff;transition:border-color .2s,box-shadow .2s}
+.pi:hover{border-color:#c4d6e2;box-shadow:var(--sh-2)}
+.pi .i{color:var(--acc);margin-bottom:14px}
+.pi p{font-size:14.5px;line-height:1.55;color:var(--ink);font-weight:500}
+
+/* solutions */
+.sol{background:#f8fafc;border-block:1px solid var(--line)}
+.sol-g{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:64px}
+.scard{position:relative;display:flex;flex-direction:column;padding:34px;border:1px solid var(--line);border-radius:var(--r-l);background:var(--bg);transition:box-shadow .3s,transform .3s,background .3s;overflow:hidden}
+.scard:hover{background:#fff;box-shadow:var(--sh-2);transform:translateY(-4px)}
+.scard:before{content:"";position:absolute;inset:0;background:radial-gradient(420px circle at var(--mx,50%) var(--my,0%),rgba(11,110,143,.07),transparent 60%);opacity:0;transition:opacity .3s;pointer-events:none}
+.scard:hover:before{opacity:1}
+.sn{font-family:var(--head);font-weight:800;font-size:13px;color:var(--acc);display:flex;align-items:center;gap:10px;margin-bottom:22px}
+.sn i{flex:1;height:1px;background:var(--line)}
+.scard h3{font-size:25px;letter-spacing:-.03em}
+.scard .tl{font-family:var(--head);font-weight:600;color:var(--ink);font-size:16px;margin-top:10px;line-height:1.4}
+.scard p{font-size:15px;margin-top:12px;line-height:1.7}
+.mini{margin:24px 0 26px;padding:16px;border-radius:14px;background:#fff;border:1px solid var(--line);flex:1;display:flex;flex-wrap:wrap;align-content:center;gap:8px}
+.scard:hover .mini{background:var(--bg)}
+.mc{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:500;padding:6px 11px;border-radius:999px;background:var(--acc-xl);border:1px solid #d3e7ee;color:var(--ink)}
+.mc .i{width:14px;height:14px;color:var(--acc)}
+.ar{color:#b4c2cf;display:inline-flex;align-items:center}.ar .i{width:14px;height:14px}
+.mb{font-size:12.5px;padding:7px 11px;border-radius:12px;max-width:80%;color:var(--ink);line-height:1.4}
+.mb.in{background:var(--soft);border-top-left-radius:3px}.mb.out{background:#d9f3e2;border-top-right-radius:3px;margin-left:auto}
+.mini.col{flex-direction:column;align-items:stretch;gap:7px}
+
+/* how it works */
+.hiw-g{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:72px;position:relative}
+.hiw-line{position:absolute;top:27px;left:6%;right:6%;height:2px;background:var(--line);overflow:hidden}
+.hiw-line:after{content:"";position:absolute;inset:0;background:var(--acc);transform:scaleX(0);transform-origin:left;transition:transform 2.4s cubic-bezier(.5,0,.2,1)}
+.hiw.in .hiw-line:after{transform:scaleX(1)}
+.hs{position:relative}
+.hs-n{width:56px;height:56px;border-radius:50%;background:#fff;border:2px solid var(--line);display:grid;place-items:center;font-family:var(--head);font-weight:800;color:var(--muted);font-size:17px;position:relative;z-index:1;transition:all .4s;transition-delay:calc(var(--k)*.6s)}
+.hiw.in .hs-n{background:var(--acc);border-color:var(--acc);color:#fff;box-shadow:0 0 0 7px var(--acc-l)}
+.hs h3{font-size:20px;margin-top:24px}.hs p{margin-top:8px;font-size:15px;line-height:1.65;max-width:250px}
+
+/* demo */
+.demo{background:linear-gradient(180deg,#f8fafc 0,#e3eef4 100%);border-block:1px solid var(--line)}
+.demo-g{display:grid;grid-template-columns:400px 1fr;gap:40px;margin-top:64px;align-items:start;max-width:1040px;margin-inline:auto}
+.phone{background:#fff;border:1px solid var(--line);border-radius:30px;box-shadow:var(--sh-3);overflow:hidden}
+.phone .chat-b{height:420px;min-height:0;overflow-y:auto;scroll-behavior:smooth;padding:16px 14px}
+.phone .chat-b::-webkit-scrollbar{width:0}
+.typing{display:flex;gap:4px;padding:12px 14px;background:#fff;border-radius:14px;border-top-left-radius:4px;align-self:flex-start;width:56px}
+.typing i{width:6px;height:6px;border-radius:50%;background:#9aa9b8;animation:ty 1s infinite}.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+@keyframes ty{40%{transform:translateY(-4px);opacity:.5}}
+.msg{animation:pop .35s cubic-bezier(.2,.8,.2,1) both}
+.reply{padding:14px;border-top:1px solid var(--line);background:#fff;min-height:78px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.rb{flex:1;min-width:160px;text-align:left;padding:11px 16px;border-radius:999px;border:1.5px solid var(--acc);color:var(--acc);font-weight:600;font-size:14px;background:#fff;transition:.2s;position:relative}
+.rb:hover{background:var(--acc);color:#fff}
+.rb:not(:disabled){animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(11,110,143,.3)}70%,100%{box-shadow:0 0 0 10px rgba(11,110,143,0)}}
+.rb:disabled{opacity:.4;cursor:default;animation:none}
+.ap{font-size:13px;font-weight:600;color:var(--muted);padding:8px 10px;border-radius:8px}.ap:hover{color:var(--ink);background:var(--soft)}
+.sys{background:#fff;border:1px solid var(--line);border-radius:var(--r-l);box-shadow:var(--sh-2);padding:28px}
+.sys-h{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+.sys-h b{font-family:var(--head);font-size:16px;color:var(--ink)}
+.live{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;color:var(--muted)}
+.live.on{color:var(--ok)}.live.on .dot{animation:blink 1.4s infinite}.live .dot{background:#b7c3cf}.live.on .dot{background:var(--ok)}
+@keyframes blink{50%{opacity:.35}}
+.chk{list-style:none;display:grid;gap:4px;margin-top:14px}
+.chk li{display:flex;align-items:center;gap:13px;padding:10px 12px;border-radius:12px;font-size:14.5px;color:var(--muted);transition:background .4s,color .4s}
+.chk .ci{width:24px;height:24px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;color:#fff;transition:all .35s;flex:none}
+.chk .ci .i{width:13px;height:13px;stroke-width:3;opacity:0;transform:scale(.4);transition:all .35s}
+.chk li.on{color:var(--ink);background:var(--ok-l);font-weight:500}
+.chk li.on .ci{background:var(--ok);border-color:var(--ok)}.chk li.on .ci .i{opacity:1;transform:none}
+.rec{margin-top:20px;border:1px solid var(--line);border-radius:14px;background:var(--bg);padding:16px 18px}
+.rec-h{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-size:13px;font-weight:600;color:var(--ink)}
+.rec .row{border-color:#dbe3ea}.rec .row b{transition:color .3s}.rec .row b.e{color:#a9b6c3;font-weight:500}
+.demo-cta{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:48px;text-align:center}
+.demo-cta small{font-size:13px;color:var(--muted)}
+
+/* before after */
+.ba-g{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:64px}
+.ba{border-radius:var(--r-l);padding:34px;border:1px solid var(--line);background:#fff}
+.ba.af{background:var(--acc-xl);border-color:#cfe5ec;box-shadow:var(--sh-2)}
+.ba-h{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:26px}
+.ba-h h3{font-size:19px}
+.ba ol{list-style:none;position:relative}
+.ba li{position:relative;display:flex;align-items:center;gap:14px;padding:0 0 22px 0;font-size:15px;color:var(--ink);font-weight:500;line-height:1.4}
+.ba li:last-child{padding-bottom:0}
+.ba li:before{content:"";position:absolute;left:13px;top:30px;bottom:-4px;width:2px;background:var(--line)}
+.ba li:last-child:before{display:none}
+.ba.af li:before{background:#c8dfe7}
+.bd{width:28px;height:28px;border-radius:50%;flex:none;display:grid;place-items:center;font-size:12px;font-weight:700;font-family:var(--head);background:var(--soft);color:var(--muted);position:relative;z-index:1}
+.af .bd{background:var(--acc);color:#fff}
+.ba li em{margin-left:auto;font-style:normal;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;background:var(--amber-l);color:var(--amber);white-space:nowrap}
+.af li em{background:var(--ok-l);color:var(--ok)}
+.js .ba li{opacity:0;transform:translateX(-10px);transition:opacity .5s,transform .5s;transition-delay:calc(var(--k)*.12s)}
+.js .ba-g.in li{opacity:1;transform:none}
+
+/* impact */
+.imp{background:#f8fafc;border-block:1px solid var(--line)}
+.imp-g{display:grid;grid-template-columns:repeat(3,1fr);margin-top:64px;border:1px solid var(--line);border-radius:var(--r-l);overflow:hidden}
+.ic{padding:34px 32px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:#fff;transition:background .25s}
+.ic:nth-child(3n){border-right:0}.ic:nth-child(n+4){border-bottom:0}
+.ic:hover{background:var(--acc-xl)}
+.ic-i{width:46px;height:46px;border-radius:13px;background:var(--acc-l);color:var(--acc);display:grid;place-items:center;margin-bottom:22px}
+.ic h3{font-size:19px}.ic p{font-size:15px;margin-top:9px;line-height:1.65}
+
+/* custom */
+.cust-w{padding:0}
+.cust{background:var(--ink);color:#b9c6d6;border-radius:34px;padding:88px 64px;position:relative;overflow:hidden}
+.cust:before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.09) 1px,transparent 1px);background-size:28px 28px;-webkit-mask-image:radial-gradient(ellipse 80% 70% at 50% 0,#000,transparent 80%);mask-image:radial-gradient(ellipse 80% 70% at 50% 0,#000,transparent 80%)}
+.cust>*{position:relative}
+.cust h2{color:#fff}.cust .lead{color:#b9c6d6}.cust .tag{color:#7fd0e6}.cust .tag:before{background:#7fd0e6}
+.flow{display:grid;grid-template-columns:1.05fr auto 1fr auto 1.05fr;align-items:stretch;gap:0;margin-top:64px}
+.fb{border-radius:20px;padding:26px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04)}
+.fb h4{color:#fff;font-size:15px;margin-bottom:16px;font-weight:700}
+.fb small{display:block;margin-top:16px;font-size:13px;color:#93a4b8}
+.old{display:flex;flex-direction:column;gap:9px}
+.old span{display:flex;align-items:center;gap:10px;font-size:13.5px;padding:9px 12px;border-radius:10px;background:rgba(255,255,255,.05);border:1px dashed rgba(255,255,255,.18);color:#c9d4e1}
+.old span .i{width:15px;height:15px;color:#e6a94f}
+.bf{background:#fff;border-color:#fff;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;min-width:170px;box-shadow:0 30px 70px rgba(0,0,0,.35)}
+.bf .logo-m{width:50px;height:50px;border-radius:14px}.bf .logo-m svg{width:26px;height:26px}
+.bf b{font-family:var(--head);color:var(--ink);font-size:17px}
+.bf p{font-size:13px;color:var(--body);line-height:1.5}
+.cn{display:flex;align-items:center;justify-content:center;width:56px;color:#5f7590}
+.cn:before{content:"";flex:1;height:2px;background:repeating-linear-gradient(90deg,#4c6280 0 6px,transparent 6px 11px)}
+.cn .i{margin-left:-4px}
+.new{display:flex;flex-direction:column;gap:9px}
+.new span{display:flex;align-items:center;gap:10px;font-size:13.5px;padding:9px 12px;border-radius:10px;background:rgba(127,208,230,.1);border:1px solid rgba(127,208,230,.28);color:#fff}
+.new span .i{width:15px;height:15px;color:#7fd0e6}
+.new span.human{background:rgba(255,255,255,.04);border-style:dashed;border-color:rgba(255,255,255,.2);color:#c9d4e1}
+.ex{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:48px}
+.ex span{padding:9px 16px;border-radius:999px;border:1px solid rgba(255,255,255,.16);color:#e3ebf4;font-size:14px;transition:.2s}
+.ex span:hover{background:#fff;color:var(--ink);border-color:#fff}
+.cust-cta{text-align:center;margin-top:44px}
+.cust .btn-p{background:#fff;color:var(--ink)}.cust .btn-p:hover{background:var(--acc-l)}
+
+/* who */
+.who-g{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:64px}
+.wc{padding:28px 24px;border:1px solid var(--line);border-radius:var(--r-m);background:#fff;transition:.25s}
+.wc:hover{transform:translateY(-4px);box-shadow:var(--sh-2);border-color:#c4d6e2}
+.wc .i{color:var(--acc);width:26px;height:26px;margin-bottom:34px}
+.wc h3{font-size:16.5px}
+
+/* why */
+.why{background:#f8fafc;border-block:1px solid var(--line)}
+.why-g{display:grid;grid-template-columns:.85fr 1.15fr;gap:80px;align-items:start}
+.wl{display:grid;gap:0}
+.wi{display:grid;grid-template-columns:48px 1fr;gap:20px;padding:28px 0;border-bottom:1px solid var(--line)}
+.wi:first-child{padding-top:0}.wi:last-child{border:0;padding-bottom:0}
+.wi .ic-i{margin:0;width:48px;height:48px}
+.wi h3{font-size:19px}.wi p{margin-top:6px;font-size:15.5px}
+
+/* trust */
+.trust-g{display:grid;grid-template-columns:1.1fr .9fr;gap:22px;margin-top:56px}
+.tbox{border:1px solid var(--line);border-radius:var(--r-l);background:#fff;padding:36px}
+.tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.tags span{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:500;padding:9px 15px;border-radius:12px;background:var(--acc-xl);border:1px solid #d3e7ee;color:var(--ink)}
+.tags .i{width:16px;height:16px;color:var(--acc)}
+.tbox p.t{font-size:16px;line-height:1.75}
+.fnd{display:flex;gap:20px;align-items:center}
+.fnd .av{width:68px;height:68px;border-radius:20px;background:var(--ink);color:#fff;font-family:var(--head);font-weight:800;font-size:22px;flex:none}
+.fnd b{font-family:var(--head);font-size:20px;color:var(--ink);display:block;line-height:1.2}.fnd small{font-size:13.5px;color:var(--muted)}
+.tbox .fp{margin-top:20px;font-size:15px;line-height:1.7}
+.ct{display:flex;flex-direction:column;gap:8px;margin-top:22px}
+.ct a{display:flex;align-items:center;gap:11px;font-size:14.5px;font-weight:500;color:var(--ink);padding:10px 14px;border:1px solid var(--line);border-radius:12px;transition:.2s}
+.ct a:hover{border-color:var(--acc);color:var(--acc)}.ct .i{color:var(--acc);width:18px;height:18px}
+/* testimonials: add <figure class="quote"> blocks inside .quotes when real testimonials are available */
+
+/* CTA */
+.cta{padding:0 0 120px}
+.cta-b{border-radius:34px;background:#fff;border:1px solid var(--line);box-shadow:var(--sh-3);padding:88px 40px;text-align:center;position:relative;overflow:hidden}
+.cta-b:before{content:"";position:absolute;left:0;right:0;top:0;height:6px;background:var(--acc)}
+.cta-b h2{font-size:clamp(32px,4.6vw,56px);max-width:820px;margin-inline:auto;letter-spacing:-.04em}
+.cta-b p{max-width:620px;margin:22px auto 0;font-size:18px}
+.cta-a{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:38px}
+
+/* FAQ */
+.faq{max-width:820px;margin:56px auto 0}
+details{border-bottom:1px solid var(--line)}
+details:first-child{border-top:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:24px 4px;font-family:var(--head);font-weight:700;font-size:17.5px;color:var(--ink);letter-spacing:-.015em;transition:color .2s}
 summary::-webkit-details-marker{display:none}
-summary:after{content:"+";color:var(--p);font-size:22px;font-weight:400;line-height:1}
-details[open] summary:after{content:"−"}
-details p{margin-top:12px;font-size:14px;line-height:1.75}
-.cta{padding:85px 0;background:radial-gradient(circle at 15% 20%,rgba(82,174,181,.15),transparent 27%),#e6f1f5}
-.cd{position:relative;overflow:hidden;padding:72px 35px;border:1px solid #c6dce4;border-radius:30px;background:linear-gradient(135deg,#fff,#f3f9fb);box-shadow:0 18px 50px rgba(16,42,67,.1);text-align:center}
-.cd>*{position:relative}
-.ctt{max-width:760px;margin:auto;color:var(--h);font-size:clamp(32px,5vw,56px);line-height:1.1;letter-spacing:-.045em;font-weight:800}
-.cdd{max-width:650px;margin:20px auto 0;font-size:16px;line-height:1.75}
-.ca{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:31px}
-.fo{padding:90px 0 110px;background:#fff}
-.fc{display:grid;grid-template-columns:125px 1fr;align-items:center;gap:35px;max-width:1000px;margin:auto;padding:40px;border:1px solid var(--b);border-radius:25px;background:linear-gradient(135deg,#fff,#f6f9fc);box-shadow:var(--sh)}
-.av{width:115px;height:115px;display:flex;align-items:center;justify-content:center;border-radius:24px;background:linear-gradient(145deg,var(--p),#438ea1);color:#fff;font-size:32px;font-weight:850;box-shadow:0 15px 30px rgba(11,102,128,.18)}
-.fl2{color:var(--p);font-size:11px;font-weight:800;letter-spacing:.07em}
-.fn{margin-top:6px;color:var(--h);font-size:29px;letter-spacing:-.03em}
-.fd{max-width:760px;margin-top:10px;font-size:14.5px;line-height:1.8}
-.fcn{display:flex;flex-wrap:wrap;gap:9px;margin-top:20px}
-.pill{display:inline-flex;padding:10px 13px;border:1px solid var(--b);border-radius:9px;background:#fff;color:var(--p);font-size:12px;font-weight:700;word-break:break-all}
-footer{background:#f3f7fb;border-top:1px solid var(--b);padding:55px 0 25px}
-.ft{display:flex;justify-content:space-between;gap:60px;padding-bottom:45px}
-.fb{max-width:370px}.fb p{margin-top:13px;color:#7d8d9d;font-size:13px;line-height:1.75}
-.fk{display:flex;gap:65px}
-.fk h4{margin-bottom:14px;color:var(--h);font-size:12px;font-weight:800}
-.fk a{display:block;margin-bottom:9px;color:#738497;font-size:13px}.fk a:hover{color:var(--p)}
-.fbt{display:flex;justify-content:space-between;gap:20px;padding-top:22px;border-top:1px solid var(--b);color:#91a0ae;font-size:11px}
-.fab{display:none}
-@media(max-width:1000px){
-.hc{grid-template-columns:1fr;text-align:center;gap:50px}.hd{margin-inline:auto}.ha,.hn{justify-content:center}
-.wv{max-width:550px;width:100%;margin:auto}
-.pl{grid-template-columns:1fr;gap:50px}.pc{position:static}
-.steps,.g3{grid-template-columns:repeat(2,1fr)}
-.ib{grid-template-columns:repeat(2,1fr)}.ii:nth-child(2){border-right:0}.ii:nth-child(n+3){border-top:1px solid var(--b)}.ii:nth-child(4){border-right:0}
+summary:hover{color:var(--acc)}
+.pm{width:30px;height:30px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;flex:none;position:relative;transition:.3s;background:#fff}
+.pm:before,.pm:after{content:"";position:absolute;width:11px;height:1.8px;background:currentColor;border-radius:2px;transition:.3s}
+.pm:after{transform:rotate(90deg)}
+details[open] .pm{background:var(--acc);border-color:var(--acc);color:#fff;transform:rotate(180deg)}
+details[open] .pm:after{transform:rotate(0)}
+details p{padding:0 56px 26px 4px;font-size:16px;line-height:1.75;animation:pop .35s ease both}
+
+/* footer */
+footer{background:#fff;border-top:1px solid var(--line);padding:64px 0 28px}
+.f-t{display:flex;justify-content:space-between;gap:48px;padding-bottom:48px}
+.f-b p{margin-top:14px;font-family:var(--head);font-weight:600;color:var(--ink);font-size:15px}
+.f-b small{display:block;margin-top:6px;font-size:14px;color:var(--muted);max-width:300px;line-height:1.6}
+.f-n{display:flex;gap:80px}
+.f-n h4{font-size:13.5px;margin-bottom:16px}
+.f-n a{display:block;font-size:14.5px;margin-bottom:11px;color:var(--body);transition:color .2s}.f-n a:hover{color:var(--acc)}
+.f-bt{display:flex;justify-content:space-between;gap:16px;padding-top:24px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+.f-bt div{display:flex;gap:22px}
+.fab{display:flex;position:fixed;z-index:98;right:24px;bottom:calc(24px + env(safe-area-inset-bottom,0px));width:60px;height:60px;border-radius:50%;background:var(--wa);color:#fff;align-items:center;justify-content:center;box-shadow:0 10px 26px rgba(37,166,91,.45);transition:transform .2s,box-shadow .2s}
+.fab:hover{transform:translateY(-3px) scale(1.05);box-shadow:0 14px 32px rgba(37,166,91,.55)}
+.fab .i{width:30px;height:30px}
+
+/* responsive */
+@media(max-width:1100px){
+.hero-g{grid-template-columns:1fr;gap:56px}
+.hero h1,.hero .sub{max-width:720px}
+.stage{max-width:600px;width:100%;margin:0 auto}
+.prob-g,.why-g{grid-template-columns:1fr;gap:48px}.prob-l{position:static}
+.flow{grid-template-columns:1fr;gap:0}
+.cn{width:auto;height:44px;flex-direction:column}.cn:before{width:2px;height:auto;flex:1;background:repeating-linear-gradient(180deg,#4c6280 0 6px,transparent 6px 11px)}.cn .i{margin:-4px 0 0;transform:rotate(90deg)}
+.who-g{grid-template-columns:repeat(3,1fr)}
+.cust{padding:72px 36px}
+.trust-g{grid-template-columns:1fr}
 }
-@media(max-width:750px){
-.c{width:calc(100% - 34px)}
-.nl{display:none}.nav{height:64px}.nb{padding:10px 14px;font-size:13px}
-.hero{min-height:auto;padding-top:64px}.hc{padding:56px 0 60px}
-.hd{font-size:16px}.s{padding:70px 0}.dsc{font-size:15px}
-.ha .btn{width:100%}
-.vg{grid-template-columns:repeat(2,1fr);gap:20px 0}.vi:nth-child(2){border-right:0}.vi:nth-child(n+3){border-top:1px solid var(--b);padding-top:20px}
-.g2,.g3,.steps,.cg,.ib{grid-template-columns:1fr}
-.ii,.ii:nth-child(n){border-right:0;border-top:1px solid var(--b)}.ii:first-child{border-top:0}
-.cc{padding:26px}
-.fc{grid-template-columns:1fr;text-align:center;justify-items:center;padding:30px 22px}.fcn{justify-content:center}
-.ft{flex-direction:column;gap:35px}.fk{display:grid;grid-template-columns:repeat(2,1fr);gap:25px}.fbt{flex-direction:column}
-.cd{padding:52px 20px;border-radius:22px}.ca .btn{width:100%}
-.fab{display:flex;position:fixed;z-index:999;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));width:56px;height:56px;border-radius:50%;background:var(--wa);color:#fff;align-items:center;justify-content:center;box-shadow:0 10px 25px rgba(31,168,85,.45)}
-.fab .wi{width:28px;height:28px}
+@media(max-width:900px){
+.links,.nav-cta .btn-s{display:none}
+.burger{display:block}
+.menu{display:block;position:fixed;top:var(--nav);left:0;right:0;background:rgba(255,255,255,.98);border-bottom:1px solid var(--line);box-shadow:var(--sh-2);padding:10px 24px 24px;transform:translateY(-12px);opacity:0;visibility:hidden;transition:.25s;z-index:99}
+.nav.open+.menu{transform:none;opacity:1;visibility:visible}
+.menu a:not(.btn){display:block;padding:15px 0;border-bottom:1px solid var(--line);font-weight:600;color:var(--ink);font-size:16.5px}
+.menu .btn{width:100%;margin-top:16px}
+.sec{padding:88px 0}
+.sol-g,.ba-g{grid-template-columns:1fr}
+.hiw-g{grid-template-columns:1fr 1fr;gap:44px 22px}.hiw-line{display:none}
+.imp-g{grid-template-columns:1fr 1fr}
+.ic,.ic:nth-child(3n){border-right:1px solid var(--line);border-bottom:1px solid var(--line)}.ic:nth-child(2n){border-right:0}.ic:nth-child(n+5){border-bottom:0}
+.demo-g{grid-template-columns:1fr;max-width:460px}
+.who-g{grid-template-columns:repeat(2,1fr)}
 }
-@media(max-width:480px){
-.wr{grid-template-columns:30px 1fr}.wst{display:none}.dash{padding:16px}.df{grid-template-columns:1fr}
-.vg{grid-template-columns:1fr}.vi,.vi:nth-child(n){border-right:0;border-top:1px solid var(--b);padding:18px 10px}.vi:first-child{border-top:0}
-.ht{letter-spacing:-.04em}
+@media(max-width:640px){
+:root{--nav:64px}
+.wrap{width:calc(100% - 32px)}
+.sec{padding:72px 0}
+.hero{padding-top:calc(var(--nav) + 40px)}
+.hero .sub,.lead{font-size:16.5px}
+.hero-cta .btn{width:100%}
+.stage{height:auto;display:flex;flex-direction:column;gap:14px}
+.glow{display:none}
+.chat,.card-f,.pl{position:relative;inset:auto;width:100%;right:auto;left:auto;top:auto;bottom:auto}
+.pl{flex-wrap:wrap}
+.fl,.fl2,.bk.hb,.tc.hb,.cf.hb{animation:pop .6s cubic-bezier(.2,.8,.2,1) forwards}
+.plist{grid-template-columns:1fr}
+.scard,.ba{padding:26px 22px}
+.imp-g{grid-template-columns:1fr}.ic,.ic:nth-child(n){border-right:0;border-bottom:1px solid var(--line)}.ic:last-child{border-bottom:0}
+.hiw-g{grid-template-columns:1fr}
+.cust{padding:56px 20px;border-radius:26px}
+.who-g{grid-template-columns:1fr}.wc .i{margin-bottom:18px}
+.sys{padding:20px}
+.cta-b{padding:60px 22px;border-radius:26px}.cta-a .btn,.demo-cta .btn,.cust-cta .btn{width:100%}
+summary{font-size:16px}details p{padding-right:4px}
+.f-t{flex-direction:column}.f-n{gap:44px}.f-bt{flex-direction:column}
+.pipe{padding:18px}
+.tbox{padding:26px 22px}
+.fab{display:flex;position:fixed;z-index:98;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));width:56px;height:56px;border-radius:50%;background:var(--wa);color:#fff;align-items:center;justify-content:center;box-shadow:0 10px 26px rgba(37,166,91,.45)}
+.fab .i{width:28px;height:28px}
 }
-@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+@media(prefers-reduced-motion:reduce){
+*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+.hb{opacity:1;transform:none}.js .ba li{opacity:1;transform:none}.hiw .hiw-line:after{transform:scaleX(1)}
+.hiw .hs-n{background:var(--acc);border-color:var(--acc);color:#fff}
+}
 </style>
 </head>
 <body>
-<svg width="0" height="0" style="position:absolute"><symbol id="wa" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.8 14.2c-.2.7-1.4 1.3-1.9 1.3-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.2-.2-1.2-1.6-1.2-3s.8-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.2-.3.3-.1.6.2.3.7 1.2 1.5 1.9 1 .9 1.9 1.2 2.2 1.3.3.1.4.1.6-.1l.8-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.8-.1 1.5z"/></symbol></svg>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<symbol id="msg" viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></symbol>
+<symbol id="home" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></symbol>
+<symbol id="cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
+<symbol id="bell" viewBox="0 0 24 24"><path d="M6 16v-5a6 6 0 1 1 12 0v5l2 2H4z"/><path d="M10 21h4"/></symbol>
+<symbol id="users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6.5 6.5 0 0 1 3.5 6"/></symbol>
+<symbol id="user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+<symbol id="check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+<symbol id="arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+<symbol id="clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+<symbol id="bolt" viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></symbol>
+<symbol id="link" viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></symbol>
+<symbol id="shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></symbol>
+<symbol id="layers" viewBox="0 0 24 24"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/></symbol>
+<symbol id="flask" viewBox="0 0 24 24"><path d="M9 3h6M10 3v6l-5.5 9.5A2 2 0 0 0 6.2 21h11.6a2 2 0 0 0 1.7-2.5L14 9V3"/></symbol>
+<symbol id="building" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M9 8h2M13 8h2M9 12h2M13 12h2M10 21v-4h4v4"/></symbol>
+<symbol id="pin" viewBox="0 0 24 24"><path d="M12 21s7-6 7-12a7 7 0 1 0-14 0c0 6 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></symbol>
+<symbol id="table" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 10v10"/></symbol>
+<symbol id="refresh" viewBox="0 0 24 24"><path d="M20 11a8 8 0 0 0-14.5-4M4 4v4h4M4 13a8 8 0 0 0 14.5 4M20 20v-4h-4"/></symbol>
+<symbol id="tag" viewBox="0 0 24 24"><path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="8.5" r="1.2"/></symbol>
+<symbol id="help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1 .8-1 1.5M12 17h.01"/></symbol>
+<symbol id="phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></symbol>
+<symbol id="mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 8l9 6 9-6"/></symbol>
+<symbol id="flow" viewBox="0 0 24 24"><rect x="3" y="3" width="6" height="6" rx="1.5"/><rect x="15" y="15" width="6" height="6" rx="1.5"/><path d="M6 9v3a3 3 0 0 0 3 3h6"/></symbol>
+<symbol id="route" viewBox="0 0 24 24"><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="6" r="2.5"/><path d="M8.5 18H15a3 3 0 0 0 0-6H9a3 3 0 0 1 0-6h6.5"/></symbol>
+<symbol id="eye" viewBox="0 0 24 24"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+<symbol id="doc" viewBox="0 0 24 24"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/></symbol>
+<symbol id="wa" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.8 14.2c-.2.7-1.4 1.3-1.9 1.3-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.2-.2-1.2-1.6-1.2-3s.8-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.2-.3.3-.1.6.2.3.7 1.2 1.5 1.9 1 .9 1.9 1.2 2.2 1.3.3.1.4.1.6-.1l.8-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.8-.1 1.5z"/></symbol>
+<symbol id="mark" viewBox="0 0 24 24"><path d="M5 5h7a3.5 3.5 0 0 1 0 7H5zM5 12h9a3.5 3.5 0 0 1 0 7H5z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/></symbol>
+</svg>
 
 <header class="nav" id="nav">
-<div class="c ni">
-<a href="#home" class="brand">BOOKED<span>FLOW</span></a>
-<nav class="nl"><a href="#solutions">Solutions</a><a href="#how-it-works">How It Works</a><a href="#use-cases">Use Cases</a><a href="#integrations">Integrations</a></nav>
-<a href="#contact" class="btn bp nb">Contact Us</a>
-</div>
+  <div class="wrap nav-in">
+    <a href="#top" class="logo" aria-label="Booked Flow home"><span class="logo-m"><svg><use href="#mark"/></svg></span>Booked Flow</a>
+    <nav class="links" aria-label="Primary">
+      <a href="#solutions">Solutions</a><a href="#how-it-works">How It Works</a><a href="#use-cases">Use Cases</a><a href="#why">Why Booked Flow</a><a href="#faq">FAQ</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-s" href="#how-it-works">See How It Works</a>
+      <a class="btn btn-p" href="https://wa.me/919356992913?text=Hi%20Booked%20Flow%2C%20I%27d%20like%20to%20book%20a%20demo%20for%20my%20diagnostic%20lab." target="_blank" rel="noopener">Book a Demo</a>
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="prog" id="prog"></div>
 </header>
-
-<main id="home">
-<section class="hero"><div class="c"><div class="hc">
-<div>
-<div class="lbl"><i></i> Workflow Automation for Diagnostic Labs</div>
-<h1 class="ht">Your lab should run on <em>systems,</em> not constant follow-ups.</h1>
-<p class="hd">BOOKED FLOW helps diagnostic laboratories automate patient communication, home sample collection, booking coordination, reminders and repetitive operational workflows.</p>
-<div class="ha">
-<a href="https://wa.me/919356992913" target="_blank" rel="noopener noreferrer" class="btn bw"><svg class="wi"><use href="#wa"/></svg>WhatsApp Us</a>
-<a href="#how-it-works" class="btn bs">Explore the Workflow</a>
+<div class="menu" id="menu">
+  <a href="#solutions">Solutions</a><a href="#how-it-works">How It Works</a><a href="#use-cases">Use Cases</a><a href="#why">Why Booked Flow</a><a href="#faq">FAQ</a>
+  <a class="btn btn-p" href="https://wa.me/919356992913?text=Hi%20Booked%20Flow%2C%20I%27d%20like%20to%20book%20a%20demo%20for%20my%20diagnostic%20lab." target="_blank" rel="noopener">Book a Demo</a>
+  <a class="btn btn-s" href="#how-it-works">See How It Works</a>
 </div>
-<div class="hn"><i></i>Designed for diagnostic laboratories and pathology centres</div>
-</div>
-<div class="wv"><div class="dash">
-<div class="dt"><b>Patient Workflow</b><div class="ls"><i></i>Automation active</div></div>
-<div class="dm"><div class="dl">NEW REQUEST</div><div class="dh">Home Sample Collection</div>
-<div class="wl">
-<div class="wr"><div class="wic">📩</div><div><div class="wn">Patient request received</div><div class="ws">WhatsApp / Website / Lead Form</div></div><div class="wst">RECEIVED</div></div>
-<div class="wr"><div class="wic">📍</div><div><div class="wn">Service area checked</div><div class="ws">Pincode &amp; availability</div></div><div class="wst">VERIFIED</div></div>
-<div class="wr"><div class="wic">🗓️</div><div><div class="wn">Collection slot coordinated</div><div class="ws">Date &amp; preferred time</div></div><div class="wst">READY</div></div>
-<div class="wr"><div class="wic">🔔</div><div><div class="wn">Team notified</div><div class="ws">Coordinator / Technician</div></div><div class="wst">SENT</div></div>
-</div></div>
-<div class="df"><div class="ms"><strong>Patient</strong><span>Communication</span></div><div class="ms"><strong>Booking</strong><span>Coordination</span></div><div class="ms"><strong>Team</strong><span>Notification</span></div></div>
-</div></div>
-</div></div></section>
 
-<section class="vb"><div class="c"><div class="vg">
-<div class="vi"><div class="vn">Faster responses</div><div class="vl">Reduce repetitive patient communication</div></div>
-<div class="vi"><div class="vn">Fewer manual steps</div><div class="vl">Connect repetitive operational tasks</div></div>
-<div class="vi"><div class="vn">Better coordination</div><div class="vl">Keep the right team informed</div></div>
-<div class="vi"><div class="vn">Scalable workflows</div><div class="vl">Build systems around growing volume</div></div>
-</div></div></section>
+<main id="top">
 
-<section class="s pr"><div class="c"><div class="pl">
-<div class="pc"><div class="lbl"><i></i>The Operational Problem</div>
-<h2 class="ttl">Your team shouldn't have to coordinate everything manually.</h2>
-<p class="dsc">Diagnostic laboratories handle hundreds of small operational actions every day. When those actions depend entirely on people, delays and missed follow-ups become harder to avoid.</p></div>
-<div class="g2">
-<article class="card"><div class="ic">💬</div><h3>Repetitive Patient Questions</h3><p>Staff repeatedly answer questions about tests, home collection, availability, preparation and booking.</p></article>
-<article class="card"><div class="ic">🏠</div><h3>Manual Home Collection</h3><p>Collection requests can require coordination between patients, coordinators and technicians.</p></article>
-<article class="card"><div class="ic">⏰</div><h3>Follow-up Gaps</h3><p>Confirmations, reminders and pending actions can easily depend on someone remembering to follow up.</p></article>
-<article class="card"><div class="ic">🗂️</div><h3>Scattered Information</h3><p>Patient requests can become spread across WhatsApp, calls, spreadsheets and different operational systems.</p></article>
-</div></div></div></section>
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-g">
+      <div>
+        <span class="pill">Automation for diagnostic labs in India</span>
+        <h1>Automate the Work Behind Every Diagnostic Booking.</h1>
+        <p class="sub">AI-powered automation for diagnostic labs, from WhatsApp bookings and patient queries to home sample collection and technician coordination.</p>
+        <div class="hero-cta">
+          <a class="btn btn-p" href="https://wa.me/919356992913?text=Hi%20Booked%20Flow%2C%20I%27d%20like%20to%20book%20a%20demo%20for%20my%20diagnostic%20lab." target="_blank" rel="noopener">Book a Demo <svg class="i go s"><use href="#arrow"/></svg></a>
+          <a class="btn btn-s" href="#how-it-works">See How It Works</a>
+        </div>
+        <p class="note"><svg class="i s"><use href="#shield"/></svg>Built for diagnostic laboratories that want faster operations without adding more manual work.</p>
+      </div>
 
-<section class="s hw" id="how-it-works"><div class="c">
-<div style="max-width:760px"><div class="lbl"><i></i>How It Works</div>
-<h2 class="ttl">Turn a patient request into an organized workflow.</h2>
-<p class="dsc">BOOKED FLOW connects the repetitive steps between the patient, your operations team and the next action.</p></div>
-<div class="steps">
-<article class="step"><div class="sn">📥</div><h3>Capture</h3><p>Receive patient requests from WhatsApp, website forms, lead forms or other connected channels.</p></article>
-<article class="step"><div class="sn">🔍</div><h3>Understand</h3><p>Collect the information required to understand the request and determine the appropriate next step.</p></article>
-<article class="step"><div class="sn">🔄</div><h3>Coordinate</h3><p>Apply your workflow rules to coordinate slots, service areas, team assignments and operational actions.</p></article>
-<article class="step"><div class="sn">✅</div><h3>Follow Up</h3><p>Automatically send confirmations, reminders and notifications when the workflow requires another action.</p></article>
-</div></div></section>
+      <div class="stage" aria-label="Illustration of a WhatsApp booking turning into a technician assignment">
+        <div class="glow"></div>
+        <div class="chat">
+          <div class="chat-h"><div class="av"><svg class="i"><use href="#flask"/></svg></div><div><b>City Diagnostics</b><small><span class="dot"></span>Lab assistant online</small></div></div>
+          <div class="chat-b">
+            <div class="b out hb" style="--d:0">Hi, I want to book a blood test.<time>10:42</time></div>
+            <div class="b in hb" style="--d:1">Sure. Which test would you like to book?<time>10:42</time></div>
+            <div class="b out hb" style="--d:2">CBC and Vitamin D.<time>10:43</time></div>
+            <div class="b in hb" style="--d:3">Great. Visit the lab or home sample collection?<time>10:43</time></div>
+            <div class="b out hb" style="--d:4">Home collection.<time>10:43</time></div>
+            <div class="b in hb" style="--d:5">Booked for tomorrow, 8 to 9 AM. Your technician has been notified.<time>10:44</time></div>
+          </div>
+        </div>
+        <div class="card-f bk hb" style="--d:3.4">
+          <div class="bk-h"><b>Booking BF-2041</b><span class="chip"><svg class="i s" style="width:12px;height:12px;stroke-width:2.6"><use href="#check"/></svg>Confirmed</span></div>
+          <div class="rows">
+            <div class="row"><span>Patient</span><b>Anita D.</b></div>
+            <div class="row"><span>Tests</span><b>CBC, Vitamin D</b></div>
+            <div class="row"><span>Collection</span><b>Home, Baner</b></div>
+            <div class="row"><span>Slot</span><b>Tomorrow, 8 to 9 AM</b></div>
+          </div>
+        </div>
+        <div class="card-f tc hb" style="--d:5.2">
+          <div class="av">RS</div>
+          <div><b>Rahul S. assigned</b><small>Technician notified on WhatsApp</small></div>
+        </div>
+        <div class="card-f cf hb" style="--d:6.2"><span class="ck"><svg class="i"><use href="#check"/></svg></span>Workflow completed</div>
+      </div>
+    </div>
 
-<section class="s sol" id="solutions"><div class="c">
-<div class="ct"><div class="lbl"><i></i>Automation Solutions</div>
-<h2 class="ttl">Practical automation for the work your lab does every day.</h2>
-<p class="dsc">Start with one workflow. Improve it. Then connect the next. The goal is not to replace your team — it is to remove unnecessary manual coordination from their day.</p></div>
-<div class="g3">
-<article class="card"><div class="ic">🏠</div><h3>Home Sample Collection</h3><p>Automate collection requests, pincode checks, slot coordination, technician notifications and patient updates.</p></article>
-<article class="card"><div class="ic">💬</div><h3>WhatsApp Automation</h3><p>Handle common patient communication and send automated confirmations, reminders and workflow updates.</p></article>
-<article class="card"><div class="ic">📅</div><h3>Booking Workflows</h3><p>Turn incoming requests into structured booking workflows instead of relying on repeated manual coordination.</p></article>
-<article class="card"><div class="ic">⏰</div><h3>Patient Reminders</h3><p>Trigger reminders for appointments, collection slots and other important patient actions.</p></article>
-<article class="card"><div class="ic">🔔</div><h3>Team Notifications</h3><p>Automatically route relevant information to coordinators, technicians and other members of your team.</p></article>
-<article class="card"><div class="ic">👥</div><h3>Lead &amp; Patient Management</h3><p>Structure incoming enquiries and connect each request to the right next action.</p></article>
-</div></div></section>
+    <div class="pipe" aria-label="How a patient request moves through the lab">
+      <ol>
+        <li><span class="pn"><span><svg class="i s"><use href="#user"/></svg></span>Patient</span><span class="pc" style="--k:0"></span></li>
+        <li><span class="pn"><span><svg class="i s"><use href="#msg"/></svg></span>WhatsApp</span><span class="pc" style="--k:1"></span></li>
+        <li><span class="pn"><span><svg class="i s"><use href="#bolt"/></svg></span>AI conversation</span><span class="pc" style="--k:2"></span></li>
+        <li><span class="pn"><span><svg class="i s"><use href="#route"/></svg></span>Booking, query or collection</span><span class="pc" style="--k:3"></span></li>
+        <li><span class="pn"><span><svg class="i s"><use href="#users"/></svg></span>Lab team</span><span class="pc" style="--k:4"></span></li>
+        <li><span class="pn"><span><svg class="i s"><use href="#flask"/></svg></span>Technician</span><span class="pc" style="--k:5"></span></li>
+        <li><span class="pn end"><span><svg class="i s"><use href="#check"/></svg></span>Completed</span></li>
+      </ol>
+    </div>
+  </div>
+</section>
 
-<section class="s us" id="use-cases"><div class="c">
-<div class="ct"><div class="lbl"><i></i>Use Cases</div>
-<h2 class="ttl">Automate the repetitive parts of your operation.</h2>
-<p class="dsc">Designed for the real-world coordination that happens between patients, collection teams and lab staff.</p></div>
-<div class="g3">
-<article class="card"><div class="ic">🏠</div><h3>Home Collection Booking</h3><p>Patient request → service area check → slot → assignment → confirmation.</p></article>
-<article class="card"><div class="ic">💬</div><h3>Patient Enquiries</h3><p>Automatically handle common questions and route requests that need human attention.</p></article>
-<article class="card"><div class="ic">✅</div><h3>Appointment Confirmation</h3><p>Send structured confirmations and keep patients informed about their next step.</p></article>
-<article class="card"><div class="ic">🧑‍⚕️</div><h3>Technician Coordination</h3><p>Send collection information to the appropriate person without repeatedly copying details.</p></article>
-<article class="card"><div class="ic">🔁</div><h3>Follow-up Workflows</h3><p>Trigger follow-up actions when a patient request or operational task remains incomplete.</p></article>
-<article class="card"><div class="ic">🔔</div><h3>Internal Notifications</h3><p>Alert the right team member when an operational action requires attention.</p></article>
-</div></div></section>
+<!-- PROBLEM -->
+<section class="sec" id="problem">
+  <div class="wrap prob-g">
+    <div class="prob-l">
+      <span class="tag">The everyday load</span>
+      <h2>Your Lab Doesn't Need More Manual Work.</h2>
+      <p class="lead">Patients ask the same questions every day. Technicians need the same details repeated. Staff retype the same information into more than one place. None of it is difficult, but all of it adds up.</p>
+    </div>
+    <div class="plist">
+      <div class="pi"><svg class="i"><use href="#msg"/></svg><p>Staff answer the same WhatsApp questions again and again.</p></div>
+      <div class="pi"><svg class="i"><use href="#clock"/></svg><p>Patients wait for a reply while the team is busy.</p></div>
+      <div class="pi"><svg class="i"><use href="#doc"/></svg><p>Booking details are collected by hand, one message at a time.</p></div>
+      <div class="pi"><svg class="i"><use href="#phone"/></svg><p>Home collections are coordinated through calls and messages.</p></div>
+      <div class="pi"><svg class="i"><use href="#bell"/></svg><p>Technicians need repeated updates to stay on track.</p></div>
+      <div class="pi"><svg class="i"><use href="#table"/></svg><p>The same information is entered into multiple systems.</p></div>
+      <div class="pi"><svg class="i"><use href="#refresh"/></svg><p>Follow-ups slip when nobody has time to chase them.</p></div>
+      <div class="pi"><svg class="i"><use href="#users"/></svg><p>Skilled people spend their day on administration.</p></div>
+    </div>
+  </div>
+</section>
 
-<section class="s cmp"><div class="c">
-<div class="ct"><div class="lbl"><i></i>The Difference</div>
-<h2 class="ttl">Move from manual coordination to connected workflows.</h2></div>
-<div class="cg">
-<div class="cc"><span class="cl">WITHOUT AUTOMATION</span><h3>Your team coordinates everything manually.</h3>
-<ul><li>Patient messages need individual responses.</li><li>Booking information is copied between systems.</li><li>Collection coordination requires repeated calls.</li><li>Reminders depend on staff follow-up.</li><li>Important requests can remain buried in messages.</li></ul></div>
-<div class="cc af"><span class="cl">WITH BOOKED FLOW</span><h3>Repetitive actions move through a workflow.</h3>
-<ul><li>Patient requests enter a structured process.</li><li>Information is captured once and routed forward.</li><li>Collection workflows follow defined rules.</li><li>Confirmations and reminders can happen automatically.</li><li>Your team gets involved when human action is actually needed.</li></ul></div>
-</div></div></section>
+<!-- SOLUTIONS -->
+<section class="sec sol" id="solutions">
+  <div class="wrap">
+    <div class="head c">
+      <span class="tag">Solutions</span>
+      <h2>One Automation Layer for Your Lab Operations</h2>
+      <p class="lead">Four ways Booked Flow takes repetitive work off your team, starting with the workflow that costs you the most time.</p>
+    </div>
+    <div class="sol-g">
+      <article class="scard">
+        <div class="sn">01<i></i></div>
+        <h3>Home Sample Collection</h3>
+        <p class="tl">From patient request to technician coordination.</p>
+        <p>A patient asks for home collection. Their details are captured, availability is checked, a slot is selected, the technician is notified and the confirmation goes out. Your team stays updated throughout.</p>
+        <div class="mini">
+          <span class="mc"><svg class="i"><use href="#user"/></svg>Request</span><span class="ar"><svg class="i"><use href="#arrow"/></svg></span>
+          <span class="mc"><svg class="i"><use href="#doc"/></svg>Details</span><span class="ar"><svg class="i"><use href="#arrow"/></svg></span>
+          <span class="mc"><svg class="i"><use href="#pin"/></svg>Availability</span><span class="ar"><svg class="i"><use href="#arrow"/></svg></span>
+          <span class="mc"><svg class="i"><use href="#cal"/></svg>Slot</span><span class="ar"><svg class="i"><use href="#arrow"/></svg></span>
+          <span class="mc"><svg class="i"><use href="#bell"/></svg>Technician</span><span class="ar"><svg class="i"><use href="#arrow"/></svg></span>
+          <span class="mc"><svg class="i"><use href="#check"/></svg>Confirmation</span>
+        </div>
+        <a class="link" href="https://wa.me/919356992913?text=Hi%20Booked%20Flow%2C%20I%27d%20like%20to%20see%20Home%20Sample%20Collection%20automation%20for%20my%20lab." target="_blank" rel="noopener">Explore Home Collection <svg class="i s"><use href="#arrow"/></svg></a>
+      </article>
 
-<section class="s int" id="integrations"><div class="c">
-<div class="ct"><div class="lbl"><i></i>Integrations</div>
-<h2 class="ttl">Connect the systems you already use.</h2>
-<p class="dsc">Automation should fit around your existing operation. We can design workflows around the communication, calendar, spreadsheet, CRM and other tools your lab already uses.</p></div>
-<div class="ib">
-<div class="ii"><div class="ic">💬</div><h3>WhatsApp</h3><p>Patient communication, confirmations, reminders and workflow updates.</p></div>
-<div class="ii"><div class="ic">📊</div><h3>Google Workspace</h3><p>Connect calendars, spreadsheets and other Google-based operational workflows.</p></div>
-<div class="ii"><div class="ic">🗄️</div><h3>CRM &amp; Databases</h3><p>Move structured information into the systems your team already uses.</p></div>
-<div class="ii"><div class="ic">🔌</div><h3>Custom Systems</h3><p>Build connections around your existing software and operational requirements.</p></div>
-</div>
-<p class="in">Actual integrations depend on your current systems, access and workflow requirements.</p>
-</div></section>
+      <article class="scard">
+        <div class="sn">02<i></i></div>
+        <h3>WhatsApp Booking</h3>
+        <p class="tl">Turn WhatsApp conversations into structured bookings.</p>
+        <p>Patients start a conversation the way they normally would. The assistant understands the request, asks for what is missing, handles the back and forth, and confirms the booking details.</p>
+        <div class="mini col">
+          <div class="mb out">I need a thyroid test this week.</div>
+          <div class="mb in">Sure. Would you like to visit the lab or book home collection?</div>
+          <div class="mb out">Home, Saturday morning.</div>
+        </div>
+        <a class="link" href="https://wa.me/919356992913?text=Hi%20Booked%20Flow%2C%20I%27d%20like%20to%20see%20WhatsApp%20test%20booking%20for%20my%20lab." target="_blank" rel="noopener">Explore WhatsApp Booking <svg class="i s"><use href="#arrow"/></svg></a>
+      </article>
 
-<section class="s faq-s"><div class="c">
-<div class="ct"><div class="lbl"><i></i>Frequently Asked Questions</div>
-<h2 class="ttl">Questions diagnostic labs usually have.</h2></div>
-<div class="fl">
-<details><summary>Do we need to replace our existing software?</summary><p>Not necessarily. BOOKED FLOW is designed to automate specific workflows around the systems your lab already uses. The exact approach depends on your current software and available integrations.</p></details>
-<details><summary>Can you automate home sample collection?</summary><p>Yes. A workflow can be designed around patient requests, service-area checks, slot selection, technician coordination, notifications and follow-ups.</p></details>
-<details><summary>Can this work with WhatsApp?</summary><p>Yes. WhatsApp can be used as one of the communication channels for patient enquiries, confirmations, reminders and workflow updates, subject to the capabilities and access available in your WhatsApp setup.</p></details>
-<details><summary>Can the workflow be customized for our lab?</summary><p>Yes. The workflow should be designed around how your laboratory actually operates, including service areas, collection rules, internal responsibilities and the systems your team uses.</p></details>
-<details><summary>Where should we start?</summary><p>Start with one repetitive workflow that consumes meaningful staff time. We can map the current process, identify what can be automated and build from there.</p></details>
-</div></div></section>
+      <article class="scard">
+        <div class="sn">03<i></i></div>
+        <h3>WhatsApp Queries</h3>
+        <p class="tl">Answer repetitive patient questions automatically.</p>
+        <p>The questions your front desk hears all day get instant, consistent answers, and anything that needs a person is passed to your team.</p>
+        <div class="mini">
+          <span class="mc"><svg class="i"><use href="#tag"/></svg>Test prices</span>
+          <span class="mc"><svg class="i"><use href="#check"/></svg>Availability</span>
+          <span class="mc"><svg class="i"><use href="#home"/></svg>Home collection</span>
+          <span class="mc"><svg class="i"><use href="#doc"/></svg>Preparation</span>
+          <span class="mc"><svg class="i"><use href="#help"/></svg>Common FAQs</span>
+          <span class="mc"><svg class="i"><use href="#building"/></svg>Lab information</span>
+        </div>
+        <a class="link" href="https://wa.me/919356992913?text=Hi%20Booked%20Flow%2C%20I%27d%20like%20to%20see%20WhatsApp%20patient%20query%20automation%20for%20my%20lab." target="_blank" rel="noopener">Explore Patient Queries <svg class="i s"><use href="#arrow"/></svg></a>
+      </article>
 
-<section class="cta" id="contact"><div class="c"><div class="cd">
-<div class="lbl"><i></i>Let's Improve Your Workflow</div>
-<h2 class="ctt">Have one repetitive process in your lab? Let's automate it.</h2>
-<p class="cdd">Tell us how your current process works. We'll look at where automation can remove unnecessary manual steps and improve coordination between your patients and your team.</p>
-<div class="ca">
-<a href="tel:+919356992913" class="btn bp">Call Us <span>→</span></a>
-<a href="https://wa.me/919356992913" target="_blank" rel="noopener noreferrer" class="btn bw"><svg class="wi"><use href="#wa"/></svg>WhatsApp Us</a>
-<a href="mailto:contact@bookedflow.net" class="btn bs">Send an Email</a>
-</div></div></div></section>
+      <article class="scard">
+        <div class="sn">04<i></i></div>
+        <h3>Custom Automation</h3>
+        <p class="tl">If your team repeats it, we can probably automate it.</p>
+        <p>We build custom workflows around each laboratory's existing processes, connected to the tools your team already works in.</p>
+        <div class="mini">
+          <span class="mc"><svg class="i"><use href="#bell"/></svg>Notifications</span>
+          <span class="mc"><svg class="i"><use href="#refresh"/></svg>Follow-ups</span>
+          <span class="mc"><svg class="i"><use href="#table"/></svg>Data entry</span>
+          <span class="mc"><svg class="i"><use href="#users"/></svg>Staff coordination</span>
+          <span class="mc"><svg class="i"><use href="#link"/></svg>CRM updates</span>
+          <span class="mc"><svg class="i"><use href="#layers"/></svg>Internal workflows</span>
+          <span class="mc"><svg class="i"><use href="#doc"/></svg>Reporting</span>
+        </div>
+        <a class="link" href="https://wa.me/919356992913?text=Hi%20Booked%20Flow%2C%20I%27d%20like%20to%20discuss%20a%20custom%20workflow%20for%20my%20lab." target="_blank" rel="noopener">Discuss Your Workflow <svg class="i s"><use href="#arrow"/></svg></a>
+      </article>
+    </div>
+  </div>
+</section>
 
-<section class="fo"><div class="c"><div class="fc">
-<div class="av">SJ</div>
-<div>
-<div class="fl2">FOUNDER — BOOKED FLOW</div>
-<h2 class="fn">Sushant Jadhao</h2>
-<p class="fd">Sushant founded BOOKED FLOW to help businesses reduce repetitive operational work through practical automation. BOOKED FLOW focuses on designing automation systems that connect patient communication, bookings, home sample collection and internal coordination into clear, reliable workflows.</p>
-<div class="fcn"><a href="mailto:contact@bookedflow.net" class="pill">✉ contact@bookedflow.net</a><a href="tel:+919356992913" class="pill">☎ 9356992913</a></div>
-</div></div></div></section>
+<!-- HOW IT WORKS -->
+<section class="sec" id="how-it-works">
+  <div class="wrap">
+    <div class="head c">
+      <span class="tag">How it works</span>
+      <h2>From Manual Process to Automated Workflow</h2>
+      <p class="lead">We start with how your team works today and automate around it.</p>
+    </div>
+    <div class="hiw-g hiw" id="hiw">
+      <div class="hiw-line"></div>
+      <div class="hs" style="--k:0"><div class="hs-n">1</div><h3>Understand</h3><p>We map your current manual process.</p></div>
+      <div class="hs" style="--k:1"><div class="hs-n">2</div><h3>Design</h3><p>We design the automation around your existing workflow.</p></div>
+      <div class="hs" style="--k:2"><div class="hs-n">3</div><h3>Integrate</h3><p>We connect WhatsApp, forms, spreadsheets, CRM, calendars, APIs and other systems where required.</p></div>
+      <div class="hs" style="--k:3"><div class="hs-n">4</div><h3>Automate</h3><p>The workflow runs automatically while your team handles the exceptions and important decisions.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- INTERACTIVE DEMO -->
+<section class="sec demo" id="demo">
+  <div class="wrap">
+    <div class="head c">
+      <span class="tag">Live simulation</span>
+      <h2>See What Happens When a Patient Messages Your Lab</h2>
+      <p class="lead">Reply as the patient and watch the booking build itself on the right.</p>
+    </div>
+    <div class="demo-g">
+      <div class="phone">
+        <div class="chat-h"><div class="av"><svg class="i"><use href="#flask"/></svg></div><div><b>City Diagnostics</b><small><span class="dot"></span>Lab assistant</small></div></div>
+        <div class="chat-b" id="msgs" aria-live="polite"></div>
+        <div class="reply" id="reply"></div>
+      </div>
+      <div class="sys" aria-label="Automation running in the background">
+        <div class="sys-h"><b>Automation in the background</b><span class="live" id="live"><span class="dot"></span><span id="livet">Waiting for a message</span></span></div>
+        <ul class="chk" id="chk">
+          <li><span class="ci"><svg class="i"><use href="#check"/></svg></span>Patient details captured</li>
+          <li><span class="ci"><svg class="i"><use href="#check"/></svg></span>Tests identified</li>
+          <li><span class="ci"><svg class="i"><use href="#check"/></svg></span>Home collection requested</li>
+          <li><span class="ci"><svg class="i"><use href="#check"/></svg></span>Location checked</li>
+          <li><span class="ci"><svg class="i"><use href="#check"/></svg></span>Slot selected</li>
+          <li><span class="ci"><svg class="i"><use href="#check"/></svg></span>Technician notified</li>
+          <li><span class="ci"><svg class="i"><use href="#check"/></svg></span>Patient confirmation sent</li>
+        </ul>
+        <div class="rec">
+          <div class="rec-h">Booking record <span class="chip am" id="rstat">Draft</span></div>
+          <div class="rows">
+            <div class="row"><span>Patient</span><b class="e" id="r-name">Not yet captured</b></div>
+            <div class="row"><span>Tests</span><b class="e" id="r-tests">Not yet captured</b></div>
+            <div class="row"><span>Collection</span><b class="e" id="r-mode">Not yet captured</b></div>
+            <div class="row"><span>Location</span><b class="e" id="r-loc">Not yet captured</b></div>
+            <div class="row"><span>Slot</span><b class="e" id="r-slot">Not yet captured</b></div>
+            <div class="row"><span>Technician</span><b class="e" id="r-tech">Not assigned</b></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="demo-cta">
+      <a class="btn btn-p" href="https://wa.me/919356992913?text=Hi%20Booked%20Flow%2C%20I%27d%20like%20this%20workflow%20built%20for%20my%20lab." target="_blank" rel="noopener">Build This for My Lab <svg class="i go s"><use href="#arrow"/></svg></a>
+      <small>Illustrative simulation with sample data. Your workflow is built around your lab's own rules.</small>
+    </div>
+  </div>
+</section>
+
+<!-- BEFORE / AFTER -->
+<section class="sec" id="use-cases">
+  <div class="wrap">
+    <div class="head c">
+      <span class="tag">Before and after</span>
+      <h2>From Manual Coordination to Automated Operations</h2>
+      <p class="lead">The same booking, handled two ways.</p>
+    </div>
+    <div class="ba-g" id="ba">
+      <div class="ba">
+        <div class="ba-h"><h3>Before: handled by staff</h3><span class="chip am">8 manual steps</span></div>
+        <ol>
+          <li style="--k:0"><span class="bd">1</span>Patient WhatsApp message</li>
+          <li style="--k:1"><span class="bd">2</span>Staff reads the message</li>
+          <li style="--k:2"><span class="bd">3</span>Staff asks for details<em>Waiting</em></li>
+          <li style="--k:3"><span class="bd">4</span>Staff checks availability</li>
+          <li style="--k:4"><span class="bd">5</span>Staff contacts the technician<em>Waiting</em></li>
+          <li style="--k:5"><span class="bd">6</span>Staff confirms with the patient</li>
+          <li style="--k:6"><span class="bd">7</span>Manual spreadsheet update</li>
+          <li style="--k:7"><span class="bd">8</span>Follow-up</li>
+        </ol>
+      </div>
+      <div class="ba af">
+        <div class="ba-h"><h3>After: handled by workflow</h3><span class="chip">Runs automatically</span></div>
+        <ol>
+          <li style="--k:0"><span class="bd"><svg class="i s" style="width:14px;height:14px;stroke-width:2.6"><use href="#check"/></svg></span>Patient message<em>Instant</em></li>
+          <li style="--k:1"><span class="bd"><svg class="i s" style="width:14px;height:14px;stroke-width:2.6"><use href="#check"/></svg></span>AI understands the request</li>
+          <li style="--k:2"><span class="bd"><svg class="i s" style="width:14px;height:14px;stroke-width:2.6"><use href="#check"/></svg></span>Details captured</li>
+          <li style="--k:3"><span class="bd"><svg class="i s" style="width:14px;height:14px;stroke-width:2.6"><use href="#check"/></svg></span>Workflow triggered</li>
+          <li style="--k:4"><span class="bd"><svg class="i s" style="width:14px;height:14px;stroke-width:2.6"><use href="#check"/></svg></span>Team and technician notified</li>
+          <li style="--k:5"><span class="bd"><svg class="i s" style="width:14px;height:14px;stroke-width:2.6"><use href="#check"/></svg></span>Patient receives confirmation</li>
+          <li style="--k:6"><span class="bd"><svg class="i s" style="width:14px;height:14px;stroke-width:2.6"><use href="#check"/></svg></span>Data recorded automatically</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACT -->
+<section class="sec imp">
+  <div class="wrap">
+    <div class="head c">
+      <span class="tag">Business impact</span>
+      <h2>What Your Team Gets Back</h2>
+      <p class="lead">Time, focus and consistency, from workflows that run without being chased.</p>
+    </div>
+    <div class="imp-g">
+      <div class="ic"><div class="ic-i"><svg class="i"><use href="#bolt"/></svg></div><h3>Faster Responses</h3><p>Patients receive immediate responses to common requests.</p></div>
+      <div class="ic"><div class="ic-i"><svg class="i"><use href="#refresh"/></svg></div><h3>Less Repetitive Work</h3><p>Staff spend less time answering the same questions and entering the same information.</p></div>
+      <div class="ic"><div class="ic-i"><svg class="i"><use href="#link"/></svg></div><h3>Better Coordination</h3><p>Bookings, technicians and internal teams stay connected through automated workflows.</p></div>
+      <div class="ic"><div class="ic-i"><svg class="i"><use href="#shield"/></svg></div><h3>Fewer Manual Errors</h3><p>Structured workflows reduce mistakes caused by repetitive manual data handling.</p></div>
+      <div class="ic"><div class="ic-i"><svg class="i"><use href="#users"/></svg></div><h3>More Consistent Service</h3><p>Patients receive consistent responses regardless of who is handling the conversation.</p></div>
+      <div class="ic"><div class="ic-i"><svg class="i"><use href="#layers"/></svg></div><h3>Scalable Operations</h3><p>Handle more conversations and bookings without simply adding more administrative workload.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CUSTOM -->
+<section class="sec" id="custom">
+  <div class="wrap">
+    <div class="cust">
+      <div class="head c">
+        <span class="tag">Custom automation</span>
+        <h2>Your Workflow Doesn't Need to Look Like Everyone Else's.</h2>
+        <p class="lead">We build automation around the way your laboratory actually operates.</p>
+      </div>
+      <div class="flow">
+        <div class="fb">
+          <h4>Your current process</h4>
+          <div class="old">
+            <span><svg class="i"><use href="#user"/></svg>Manual steps</span>
+            <span><svg class="i"><use href="#refresh"/></svg>Repeated tasks</span>
+            <span><svg class="i"><use href="#link"/></svg>Disconnected tools</span>
+          </div>
+        </div>
+        <div class="cn"><svg class="i"><use href="#arrow"/></svg></div>
+        <div class="fb bf">
+          <span class="logo-m" style="background:var(--ink)"><svg><use href="#mark"/></svg></span>
+          <b>Booked Flow</b>
+          <p>Maps, designs and connects your process</p>
+        </div>
+        <div class="cn"><svg class="i"><use href="#arrow"/></svg></div>
+        <div class="fb">
+          <h4>Automated workflow</h4>
+          <div class="new">
+            <span><svg class="i"><use href="#bolt"/></svg>Tasks run on their own</span>
+            <span><svg class="i"><use href="#link"/></svg>Tools stay in sync</span>
+            <span class="human"><svg class="i"><use href="#eye"/></svg>Your team handles exceptions</span>
+          </div>
+        </div>
+      </div>
+      <div class="ex" aria-label="Examples of custom automations">
+        <span>Patient follow-up</span><span>Technician reminders</span><span>Booking notifications</span><span>Staff alerts</span><span>Data synchronization</span><span>Daily reports</span><span>Lead routing</span><span>Custom internal workflows</span>
+      </div>
+      <div class="cust-cta"><a class="btn btn-p" href="https://wa.me/919356992913?text=Hi%20Booked%20Flow%2C%20here%20is%20what%20my%20team%20does%20manually%3A%20" target="_blank" rel="noopener">Tell Us What Your Team Does Manually <svg class="i go s"><use href="#arrow"/></svg></a></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO -->
+<section class="sec" style="padding-top:0" id="who">
+  <div class="wrap">
+    <div class="head c">
+      <span class="tag">Who it's for</span>
+      <h2>Built for Diagnostic Laboratories</h2>
+    </div>
+    <div class="who-g">
+      <div class="wc"><svg class="i"><use href="#flask"/></svg><h3>Independent Diagnostic Labs</h3></div>
+      <div class="wc"><svg class="i"><use href="#eye"/></svg><h3>Pathology Laboratories</h3></div>
+      <div class="wc"><svg class="i"><use href="#building"/></svg><h3>Multi-Branch Diagnostic Centres</h3></div>
+      <div class="wc"><svg class="i"><use href="#home"/></svg><h3>Home Collection Labs</h3></div>
+      <div class="wc"><svg class="i"><use href="#layers"/></svg><h3>Growing Diagnostic Chains</h3></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="sec why" id="why">
+  <div class="wrap why-g">
+    <div>
+      <span class="tag">Why Booked Flow</span>
+      <h2>Automation Built Around Your Lab, Not the Other Way Around</h2>
+      <p class="lead">No generic template. We fit the workflow to your lab, and your team stays in charge.</p>
+    </div>
+    <div class="wl">
+      <div class="wi"><div class="ic-i"><svg class="i"><use href="#flow"/></svg></div><div><h3>Workflow First</h3><p>We start with your actual process, not a generic template.</p></div></div>
+      <div class="wi"><div class="ic-i"><svg class="i"><use href="#bolt"/></svg></div><div><h3>Practical Automation</h3><p>Automate repetitive work that creates real operational value.</p></div></div>
+      <div class="wi"><div class="ic-i"><svg class="i"><use href="#link"/></svg></div><div><h3>Connected Systems</h3><p>Connect the tools your team already uses where appropriate.</p></div></div>
+      <div class="wi"><div class="ic-i"><svg class="i"><use href="#users"/></svg></div><div><h3>Human-in-the-Loop</h3><p>Automation handles repetitive tasks while your team remains in control of important decisions.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<section class="sec" id="trust">
+  <div class="wrap">
+    <div class="head c">
+      <span class="tag">Our focus</span>
+      <h2>Designed for real laboratory workflows.</h2>
+      <p class="lead">Booked Flow is built around the day-to-day operations of a diagnostic lab.</p>
+    </div>
+    <div class="trust-g">
+      <div class="tbox">
+        <p class="t">Every part of what we build maps to a task your team already performs:</p>
+        <div class="tags">
+          <span><svg class="i"><use href="#msg"/></svg>Patient communication</span>
+          <span><svg class="i"><use href="#cal"/></svg>Booking workflows</span>
+          <span><svg class="i"><use href="#home"/></svg>Home collection</span>
+          <span><svg class="i"><use href="#flask"/></svg>Technician coordination</span>
+          <span><svg class="i"><use href="#building"/></svg>Internal operations</span>
+          <span><svg class="i"><use href="#layers"/></svg>Custom automation</span>
+        </div>
+        <!-- Add real testimonials or client logos here when available -->
+      </div>
+      <div class="tbox">
+        <div class="fnd"><div class="av">SJ</div><div><b>Sushant Jadhao</b><small>Founder, Booked Flow</small></div></div>
+        <p class="fp">Booked Flow exists to reduce repetitive operational work through practical automation, connecting patient communication, bookings, home collection and internal coordination into clear, reliable workflows.</p>
+        <div class="ct">
+          <a href="mailto:contact@bookedflow.net"><svg class="i"><use href="#mail"/></svg>contact@bookedflow.net</a>
+          <a href="tel:+919356992913"><svg class="i"><use href="#phone"/></svg>+91 93569 92913</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="contact">
+  <div class="wrap">
+    <div class="cta-b">
+      <h2>How Much of Your Lab's Work Is Still Manual?</h2>
+      <p>Let's identify the repetitive processes in your laboratory and show you what can be automated.</p>
+      <div class="cta-a">
+        <a class="btn btn-p" href="https://wa.me/919356992913?text=Hi%20Booked%20Flow%2C%20I%27d%20like%20a%20free%20automation%20consultation%20for%20my%20lab." target="_blank" rel="noopener">Book a Free Automation Consultation <svg class="i go s"><use href="#arrow"/></svg></a>
+        <a class="btn btn-s" href="https://wa.me/919356992913?text=Hi%20Booked%20Flow%2C%20I%27d%20like%20to%20see%20a%20demo." target="_blank" rel="noopener">See a Demo</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec" id="faq" style="padding-top:0">
+  <div class="wrap">
+    <div class="head c">
+      <span class="tag">FAQ</span>
+      <h2>Questions Diagnostic Labs Ask</h2>
+    </div>
+    <div class="faq">
+      <details><summary>What can Booked Flow automate for diagnostic labs?<span class="pm"></span></summary><p>Patient queries on WhatsApp, test bookings, home sample collection coordination, reminders, staff and technician notifications, and custom workflows such as data entry and follow-ups.</p></details>
+      <details><summary>Can patients book tests through WhatsApp?<span class="pm"></span></summary><p>Yes. Patients message your lab as they normally would. The assistant collects the tests, collection mode, address and preferred time, then confirms the booking.</p></details>
+      <details><summary>Can WhatsApp automatically answer test price questions?<span class="pm"></span></summary><p>Yes, using the price list and test details you provide. Questions it can't answer are passed to your team.</p></details>
+      <details><summary>Can you automate home sample collection coordination?<span class="pm"></span></summary><p>Yes. The request is captured, availability is checked, a slot is coordinated, the technician is notified and the patient receives a confirmation.</p></details>
+      <details><summary>Can Booked Flow notify technicians automatically?<span class="pm"></span></summary><p>Yes. Technicians receive collection details such as test, address and slot without anyone copying and sending them manually.</p></details>
+      <details><summary>Can you integrate with our existing tools?<span class="pm"></span></summary><p>In most cases, yes. We connect WhatsApp, forms, spreadsheets, CRMs, calendars and APIs where required. What's possible depends on your current systems and access.</p></details>
+      <details><summary>Can you build custom workflows?<span class="pm"></span></summary><p>Yes. We design workflows around how your lab already operates, not the other way around.</p></details>
+      <details><summary>Will our staff still be able to handle conversations manually?<span class="pm"></span></summary><p>Yes. Your team can step into any conversation at any time. Automation handles the repetitive parts while people handle exceptions and important decisions.</p></details>
+      <details><summary>How does implementation work?<span class="pm"></span></summary><p>We map your current process, design the workflow, connect the systems involved, and launch. Most labs start with one workflow and expand from there.</p></details>
+    </div>
+  </div>
+</section>
+
 </main>
 
-<footer><div class="c">
-<div class="ft">
-<div class="fb"><a href="#home" class="brand">BOOKED<span>FLOW</span></a>
-<p>AI and workflow automation for diagnostic laboratories. Helping teams streamline patient communication, bookings, home collection and repetitive operational work.</p></div>
-<div class="fk">
-<div><h4>EXPLORE</h4><a href="#solutions">Solutions</a><a href="#how-it-works">How It Works</a><a href="#use-cases">Use Cases</a></div>
-<div><h4>COMPANY</h4><a href="#integrations">Integrations</a><a href="#contact">Contact</a><a href="mailto:contact@bookedflow.net">Email</a></div>
-<div><h4>CONTACT</h4><a href="tel:+919356992913">9356992913</a><a href="mailto:contact@bookedflow.net">contact@bookedflow.net</a><a href="https://wa.me/919356992913" target="_blank" rel="noopener noreferrer">WhatsApp</a></div>
-</div></div>
-<div class="fbt"><span>© 2026 BOOKED FLOW. All rights reserved.</span><span>Diagnostic Lab Automation</span></div>
-</div></footer>
+<footer>
+  <div class="wrap">
+    <div class="f-t">
+      <div class="f-b">
+        <a href="#top" class="logo"><span class="logo-m"><svg><use href="#mark"/></svg></span>Booked Flow</a>
+        <p>AI Automation for Diagnostic Labs</p>
+        <small>Automate the repetitive work. Serve more patients. Run your lab more efficiently.</small>
+      </div>
+      <div class="f-n">
+        <div><h4>Navigate</h4><a href="#solutions">Solutions</a><a href="#how-it-works">How It Works</a><a href="#use-cases">Use Cases</a><a href="#faq">FAQ</a></div>
+        <div><h4>Contact</h4><a href="https://wa.me/919356992913?text=Hi%20Booked%20Flow%2C%20I%27d%20like%20to%20book%20a%20demo%20for%20my%20diagnostic%20lab." target="_blank" rel="noopener">Book a Demo</a><a href="mailto:contact@bookedflow.net">contact@bookedflow.net</a><a href="tel:+919356992913">+91 93569 92913</a></div>
+      </div>
+    </div>
+    <div class="f-bt"><span>&copy; 2026 Booked Flow. All rights reserved.</span><div><a href="/privacy-policy">Privacy Policy</a><a href="/terms">Terms</a></div></div>
+  </div>
+</footer>
 
-<a class="fab" href="https://wa.me/919356992913" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Us"><svg class="wi"><use href="#wa"/></svg></a>
+<a class="fab" href="https://wa.me/919356992913?text=Hi%20Booked%20Flow%2C%20I%27d%20like%20to%20book%20a%20demo%20for%20my%20diagnostic%20lab." target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><svg class="i f"><use href="#wa"/></svg></a>
 
 <script>
-var nav=document.getElementById("nav");
-addEventListener("scroll",function(){nav.classList.toggle("sc",scrollY>15)});
-document.querySelectorAll('a[href^="#"]').forEach(function(l){l.addEventListener("click",function(e){
-var id=this.getAttribute("href");if(id==="#")return;var t=document.querySelector(id);if(!t)return;
-e.preventDefault();var h=window.innerWidth<=750?64:72;
-scrollTo({top:t.getBoundingClientRect().top+scrollY-(id==="#home"?0:h),behavior:"smooth"});});});
+(function(){
+var $=function(s,r){return (r||document).querySelector(s)};
+var nav=$("#nav"),prog=$("#prog"),burger=$("#burger");
+function onScroll(){
+  var y=window.scrollY,h=document.documentElement.scrollHeight-window.innerHeight;
+  nav.classList.toggle("sc",y>12);
+  prog.style.transform="scaleX("+(h>0?Math.min(y/h,1):0)+")";
+}
+addEventListener("scroll",onScroll,{passive:true});onScroll();
+
+burger.addEventListener("click",function(){
+  var o=nav.classList.toggle("open");
+  burger.setAttribute("aria-expanded",o);
+  burger.setAttribute("aria-label",o?"Close menu":"Open menu");
+});
+document.querySelectorAll("#menu a").forEach(function(a){a.addEventListener("click",function(){
+  nav.classList.remove("open");burger.setAttribute("aria-expanded","false");
+})});
+
+/* subtle spotlight on solution cards */
+document.querySelectorAll(".scard").forEach(function(c){
+  c.addEventListener("pointermove",function(e){
+    var r=c.getBoundingClientRect();
+    c.style.setProperty("--mx",(e.clientX-r.left)+"px");
+    c.style.setProperty("--my",(e.clientY-r.top)+"px");
+  });
+});
+
+/* reveal for how-it-works and before/after only */
+var io=new IntersectionObserver(function(es){es.forEach(function(e){
+  if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}
+})},{threshold:.35});
+["#hiw","#ba"].forEach(function(s){var el=$(s);if(el)io.observe(el)});
+
+/* interactive demo */
+var script=[
+ {p:"Hi, I want to book a blood test.",a:"Sure. May I know your name, please?",c:[],s:"Reading request"},
+ {p:"My name is Anita Deshmukh.",a:"Thanks, Anita. Which test would you like to book?",c:[0],r:{name:"Anita Deshmukh"},s:"Capturing patient details"},
+ {p:"CBC and Vitamin D.",a:"Great. Would you prefer visiting the lab or home sample collection?",c:[1],r:{tests:"CBC, Vitamin D"},s:"Identifying tests"},
+ {p:"Home collection.",a:"Got it. Please share your pincode and preferred time.",c:[2],r:{mode:"Home sample collection"},s:"Starting home collection"},
+ {p:"411001, tomorrow morning.",a:"Your area is serviceable, and tomorrow 8:00 to 9:00 AM is available. Shall I confirm?",c:[3,4],r:{loc:"411001, serviceable",slot:"Tomorrow, 8 to 9 AM"},s:"Checking location and slots"},
+ {p:"Yes, please confirm.",a:"Confirmed, Anita. CBC and Vitamin D, home collection tomorrow, 8 to 9 AM. Your technician has been notified and you'll get a reminder.",c:[5,6],r:{tech:"Rahul S., notified"},s:"Notifying technician",done:true}
+];
+var msgs=$("#msgs"),reply=$("#reply"),items=document.querySelectorAll("#chk li"),live=$("#live"),livet=$("#livet");
+var idx=0,busy=false,started=false,auto=false,timers=[];
+function t(fn,ms){var id=setTimeout(fn,ms);timers.push(id);return id}
+function bubble(txt,cls){var d=document.createElement("div");d.className="b msg "+cls;d.textContent=txt;msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;return d}
+function setRec(id,v){var e=$("#r-"+id);e.textContent=v;e.classList.remove("e")}
+function renderReply(){
+  reply.innerHTML="";
+  if(idx>=script.length){
+    var b=document.createElement("button");b.className="rb";b.style.animation="none";b.textContent="Replay the simulation";
+    b.onclick=reset;reply.appendChild(b);return;
+  }
+  var btn=document.createElement("button");btn.className="rb";btn.textContent=script[idx].p;btn.disabled=busy;
+  btn.setAttribute("aria-label","Send as patient: "+script[idx].p);
+  btn.onclick=function(){send()};reply.appendChild(btn);
+  if(idx>0){var ap=document.createElement("button");ap.className="ap";ap.textContent="Auto-play";ap.onclick=function(){auto=true;send()};reply.appendChild(ap)}
+}
+function send(){
+  if(busy||idx>=script.length)return;
+  busy=true;var st=script[idx];renderReply();
+  bubble(st.p,"out");
+  livet.textContent=st.s;live.classList.add("on");
+  var ty=document.createElement("div");ty.className="typing msg";ty.innerHTML="<i></i><i></i><i></i>";
+  t(function(){msgs.appendChild(ty);msgs.scrollTop=msgs.scrollHeight},350);
+  t(function(){
+    ty.remove();bubble(st.a,"in");
+    st.c.forEach(function(i,k){t(function(){items[i].classList.add("on")},k*450)});
+    if(st.r)for(var k in st.r)setRec(k,st.r[k]);
+    if(st.done){var rs=$("#rstat");rs.textContent="Confirmed";rs.className="chip"}
+    t(function(){
+      livet.textContent=st.done?"Workflow completed":"Waiting for patient";
+      if(st.done)live.classList.remove("on");
+      idx++;busy=false;renderReply();
+      if(auto&&idx<script.length)t(send,1300);
+    },st.c.length*450+300);
+  },1500);
+}
+function reset(){
+  timers.forEach(clearTimeout);timers=[];
+  msgs.innerHTML="";idx=0;busy=false;auto=false;
+  items.forEach(function(li){li.classList.remove("on")});
+  ["name","tests","mode","loc","slot"].forEach(function(k){var e=$("#r-"+k);e.textContent="Not yet captured";e.classList.add("e")});
+  var tt=$("#r-tech");tt.textContent="Not assigned";tt.classList.add("e");
+  var rs=$("#rstat");rs.textContent="Draft";rs.className="chip am";
+  live.classList.remove("on");livet.textContent="Waiting for a message";
+  renderReply();t(send,700);
+}
+renderReply();
+new IntersectionObserver(function(es,o){es.forEach(function(e){
+  if(e.isIntersecting&&!started){started=true;t(send,700);o.disconnect()}
+})},{threshold:.5}).observe($(".phone"));
+})();
 </script>
 </body>
 </html>
