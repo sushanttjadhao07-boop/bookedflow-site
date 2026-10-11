@@ -406,6 +406,22 @@ summary{font-size:16px}details p{padding-right:4px}
 .hb{opacity:1;transform:none}.js .ba li{opacity:1;transform:none}.hiw .hiw-line:after{transform:scaleX(1)}
 .hiw .hs-n{background:var(--acc);border-color:var(--acc);color:#fff}
 }
+
+/* interactive hero chat */
+.chat{width:330px}
+.chat .chat-b{height:340px;min-height:0;overflow-y:auto;scroll-behavior:smooth;padding:16px 14px}
+.chat .chat-b::-webkit-scrollbar{width:0}
+.bk{width:270px}
+.bk .row b.e{color:#a9b6c3;font-weight:500;transition:color .3s}
+.tc{width:252px;right:14px;top:300px}
+.cf{right:70px;bottom:34px}
+.tc,.cf{opacity:.4;transform:translateY(6px);transition:opacity .5s,transform .5s}
+.tc.on,.cf.on{opacity:1;transform:none}
+@media(max-width:640px){
+.chat,.bk,.tc,.cf{width:100%}
+.tc,.cf{top:auto;right:auto;bottom:auto}
+.chat .chat-b{height:320px}
+}
 </style>
 </head>
 <body>
@@ -478,33 +494,28 @@ summary{font-size:16px}details p{padding-right:4px}
         <p class="note"><svg class="i s"><use href="#shield"/></svg>Built for diagnostic laboratories that want faster operations without adding more manual work.</p>
       </div>
 
-      <div class="stage" aria-label="Illustration of a WhatsApp booking turning into a technician assignment">
+      <div class="stage" aria-label="Interactive WhatsApp booking simulation">
         <div class="glow"></div>
         <div class="chat">
           <div class="chat-h"><div class="av"><svg class="i"><use href="#flask"/></svg></div><div><b>City Diagnostics</b><small><span class="dot"></span>Lab assistant online</small></div></div>
-          <div class="chat-b">
-            <div class="b out hb" style="--d:0">Hi, I want to book a blood test.<time>10:42</time></div>
-            <div class="b in hb" style="--d:1">Sure. Which test would you like to book?<time>10:42</time></div>
-            <div class="b out hb" style="--d:2">CBC and Vitamin D.<time>10:43</time></div>
-            <div class="b in hb" style="--d:3">Great. Visit the lab or home sample collection?<time>10:43</time></div>
-            <div class="b out hb" style="--d:4">Home collection.<time>10:43</time></div>
-            <div class="b in hb" style="--d:5">Booked for tomorrow, 8 to 9 AM. Your technician has been notified.<time>10:44</time></div>
-          </div>
+          <div class="chat-b" id="hmsgs" aria-live="polite"></div>
+          <div class="reply" id="hreply"></div>
         </div>
-        <div class="card-f bk hb" style="--d:3.4">
-          <div class="bk-h"><b>Booking BF-2041</b><span class="chip"><svg class="i s" style="width:12px;height:12px;stroke-width:2.6"><use href="#check"/></svg>Confirmed</span></div>
+        <div class="card-f bk">
+          <div class="bk-h"><b>Booking BF-2041</b><span class="chip am" id="h-stat">Draft</span></div>
           <div class="rows">
-            <div class="row"><span>Patient</span><b>Anita D.</b></div>
-            <div class="row"><span>Tests</span><b>CBC, Vitamin D</b></div>
-            <div class="row"><span>Collection</span><b>Home, Baner</b></div>
-            <div class="row"><span>Slot</span><b>Tomorrow, 8 to 9 AM</b></div>
+            <div class="row"><span>Patient</span><b class="e" id="h-name">Waiting</b></div>
+            <div class="row"><span>Tests</span><b class="e" id="h-tests">Waiting</b></div>
+            <div class="row"><span>Collection</span><b class="e" id="h-mode">Waiting</b></div>
+            <div class="row"><span>Location</span><b class="e" id="h-loc">Waiting</b></div>
+            <div class="row"><span>Slot</span><b class="e" id="h-slot">Waiting</b></div>
           </div>
         </div>
-        <div class="card-f tc hb" style="--d:5.2">
-          <div class="av">RS</div>
-          <div><b>Rahul S. assigned</b><small>Technician notified on WhatsApp</small></div>
+        <div class="card-f tc" id="htc">
+          <div class="av" id="htca">RS</div>
+          <div><b id="htcn">Technician pending</b><small id="htcs">Assigned after confirmation</small></div>
         </div>
-        <div class="card-f cf hb" style="--d:6.2"><span class="ck"><svg class="i"><use href="#check"/></svg></span>Workflow completed</div>
+        <div class="card-f cf" id="hcf"><span class="ck"><svg class="i"><use href="#check"/></svg></span>Workflow completed</div>
       </div>
     </div>
 
@@ -937,7 +948,7 @@ var io=new IntersectionObserver(function(es){es.forEach(function(e){
 })},{threshold:.35});
 ["#hiw","#ba"].forEach(function(s){var el=$(s);if(el)io.observe(el)});
 
-/* interactive demo */
+/* interactive simulations (hero + demo section share one script) */
 var script=[
  {p:"Hi, I want to book a blood test.",a:"Sure. May I know your name, please?",c:[],s:"Reading request"},
  {p:"My name is Anita Deshmukh.",a:"Thanks, Anita. Which test would you like to book?",c:[0],r:{name:"Anita Deshmukh"},s:"Capturing patient details"},
@@ -946,55 +957,92 @@ var script=[
  {p:"411001, tomorrow morning.",a:"Your area is serviceable, and tomorrow 8:00 to 9:00 AM is available. Shall I confirm?",c:[3,4],r:{loc:"411001, serviceable",slot:"Tomorrow, 8 to 9 AM"},s:"Checking location and slots"},
  {p:"Yes, please confirm.",a:"Confirmed, Anita. CBC and Vitamin D, home collection tomorrow, 8 to 9 AM. Your technician has been notified and you'll get a reminder.",c:[5,6],r:{tech:"Rahul S., notified"},s:"Notifying technician",done:true}
 ];
-var msgs=$("#msgs"),reply=$("#reply"),items=document.querySelectorAll("#chk li"),live=$("#live"),livet=$("#livet");
-var idx=0,busy=false,started=false,auto=false,timers=[];
-function t(fn,ms){var id=setTimeout(fn,ms);timers.push(id);return id}
-function bubble(txt,cls){var d=document.createElement("div");d.className="b msg "+cls;d.textContent=txt;msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;return d}
-function setRec(id,v){var e=$("#r-"+id);e.textContent=v;e.classList.remove("e")}
-function renderReply(){
-  reply.innerHTML="";
-  if(idx>=script.length){
-    var b=document.createElement("button");b.className="rb";b.style.animation="none";b.textContent="Replay the simulation";
-    b.onclick=reset;reply.appendChild(b);return;
+
+function Sim(msgs,reply,hooks){
+  var idx=0,busy=false,auto=false,timers=[];
+  function t(fn,ms){var id=setTimeout(fn,ms);timers.push(id);return id}
+  function bubble(txt,cls){var d=document.createElement("div");d.className="b msg "+cls;d.textContent=txt;msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight}
+  function renderReply(){
+    reply.innerHTML="";
+    if(idx>=script.length){
+      var b=document.createElement("button");b.className="rb";b.style.animation="none";b.textContent="Replay the simulation";
+      b.onclick=reset;reply.appendChild(b);return;
+    }
+    var btn=document.createElement("button");btn.className="rb";btn.textContent=script[idx].p;btn.disabled=busy;
+    btn.setAttribute("aria-label","Send as patient: "+script[idx].p);
+    btn.onclick=function(){send()};reply.appendChild(btn);
+    if(idx>0){var ap=document.createElement("button");ap.className="ap";ap.textContent="Auto-play";ap.onclick=function(){auto=true;send()};reply.appendChild(ap)}
   }
-  var btn=document.createElement("button");btn.className="rb";btn.textContent=script[idx].p;btn.disabled=busy;
-  btn.setAttribute("aria-label","Send as patient: "+script[idx].p);
-  btn.onclick=function(){send()};reply.appendChild(btn);
-  if(idx>0){var ap=document.createElement("button");ap.className="ap";ap.textContent="Auto-play";ap.onclick=function(){auto=true;send()};reply.appendChild(ap)}
+  function send(){
+    if(busy||idx>=script.length)return;
+    busy=true;var st=script[idx];renderReply();
+    bubble(st.p,"out");
+    if(hooks.start)hooks.start(st);
+    var ty=document.createElement("div");ty.className="typing msg";ty.innerHTML="<i></i><i></i><i></i>";
+    t(function(){msgs.appendChild(ty);msgs.scrollTop=msgs.scrollHeight},350);
+    t(function(){
+      ty.remove();bubble(st.a,"in");
+      if(hooks.step)hooks.step(st);
+      t(function(){
+        if(hooks.settle)hooks.settle(st);
+        idx++;busy=false;renderReply();
+        if(auto&&idx<script.length)t(send,1300);
+      },st.c.length*450+300);
+    },1500);
+  }
+  function reset(){
+    timers.forEach(clearTimeout);timers=[];
+    msgs.innerHTML="";idx=0;busy=false;auto=false;
+    if(hooks.reset)hooks.reset();
+    renderReply();t(send,700);
+  }
+  renderReply();
+  return {start:function(d){t(send,d||700)}};
 }
-function send(){
-  if(busy||idx>=script.length)return;
-  busy=true;var st=script[idx];renderReply();
-  bubble(st.p,"out");
-  livet.textContent=st.s;live.classList.add("on");
-  var ty=document.createElement("div");ty.className="typing msg";ty.innerHTML="<i></i><i></i><i></i>";
-  t(function(){msgs.appendChild(ty);msgs.scrollTop=msgs.scrollHeight},350);
-  t(function(){
-    ty.remove();bubble(st.a,"in");
-    st.c.forEach(function(i,k){t(function(){items[i].classList.add("on")},k*450)});
+
+/* hero simulation */
+var htc=$("#htc"),hcf=$("#hcf"),hstat=$("#h-stat");
+function setH(k,v){var e=$("#h-"+k);e.textContent=v;e.classList.remove("e")}
+var heroSim=Sim($("#hmsgs"),$("#hreply"),{
+  step:function(st){
+    if(st.r)for(var k in st.r){if(k!=="tech")setH(k,st.r[k])}
+    if(st.r&&st.r.tech){htc.classList.add("on");$("#htcn").textContent="Rahul S. assigned";$("#htcs").textContent="Technician notified on WhatsApp"}
+    if(st.done){hstat.textContent="Confirmed";hstat.className="chip";setTimeout(function(){hcf.classList.add("on")},700)}
+  },
+  reset:function(){
+    ["name","tests","mode","loc","slot"].forEach(function(k){var e=$("#h-"+k);e.textContent="Waiting";e.classList.add("e")});
+    hstat.textContent="Draft";hstat.className="chip am";
+    htc.classList.remove("on");hcf.classList.remove("on");
+    $("#htcn").textContent="Technician pending";$("#htcs").textContent="Assigned after confirmation";
+  }
+});
+heroSim.start(1400);
+
+/* demo section simulation */
+var items=document.querySelectorAll("#chk li"),live=$("#live"),livet=$("#livet");
+function setRec(id,v){var e=$("#r-"+id);e.textContent=v;e.classList.remove("e")}
+var started=false;
+var demoSim=Sim($("#msgs"),$("#reply"),{
+  start:function(st){livet.textContent=st.s;live.classList.add("on")},
+  step:function(st){
+    st.c.forEach(function(i,k){setTimeout(function(){items[i].classList.add("on")},k*450)});
     if(st.r)for(var k in st.r)setRec(k,st.r[k]);
     if(st.done){var rs=$("#rstat");rs.textContent="Confirmed";rs.className="chip"}
-    t(function(){
-      livet.textContent=st.done?"Workflow completed":"Waiting for patient";
-      if(st.done)live.classList.remove("on");
-      idx++;busy=false;renderReply();
-      if(auto&&idx<script.length)t(send,1300);
-    },st.c.length*450+300);
-  },1500);
-}
-function reset(){
-  timers.forEach(clearTimeout);timers=[];
-  msgs.innerHTML="";idx=0;busy=false;auto=false;
-  items.forEach(function(li){li.classList.remove("on")});
-  ["name","tests","mode","loc","slot"].forEach(function(k){var e=$("#r-"+k);e.textContent="Not yet captured";e.classList.add("e")});
-  var tt=$("#r-tech");tt.textContent="Not assigned";tt.classList.add("e");
-  var rs=$("#rstat");rs.textContent="Draft";rs.className="chip am";
-  live.classList.remove("on");livet.textContent="Waiting for a message";
-  renderReply();t(send,700);
-}
-renderReply();
+  },
+  settle:function(st){
+    livet.textContent=st.done?"Workflow completed":"Waiting for patient";
+    if(st.done)live.classList.remove("on");
+  },
+  reset:function(){
+    items.forEach(function(li){li.classList.remove("on")});
+    ["name","tests","mode","loc","slot"].forEach(function(k){var e=$("#r-"+k);e.textContent="Not yet captured";e.classList.add("e")});
+    var tt=$("#r-tech");tt.textContent="Not assigned";tt.classList.add("e");
+    var rs=$("#rstat");rs.textContent="Draft";rs.className="chip am";
+    live.classList.remove("on");livet.textContent="Waiting for a message";
+  }
+});
 new IntersectionObserver(function(es,o){es.forEach(function(e){
-  if(e.isIntersecting&&!started){started=true;t(send,700);o.disconnect()}
+  if(e.isIntersecting&&!started){started=true;demoSim.start(700);o.disconnect()}
 })},{threshold:.5}).observe($(".phone"));
 })();
 </script>
